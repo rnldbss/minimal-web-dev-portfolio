@@ -7,8 +7,10 @@ export default {
       colors: {
       "background-light": '#f3f6f7',
       "background-dark": '#213335',
-      "body-light": '#60767d',   
+      "body-light": '#435156',   
       "body-dark": '#e7eef0',
+      "heading-light": '#435358',   
+      "heading-dark": '#e7eef0',
       accent: '#5BD1D7',
       primary:"#b0bbbe"
 

@@ -38,11 +38,11 @@
 
 @layer base {
   h1,h2,h3,h4,h5,h6 {
-    @apply font-michroma -ml-1 text-body-light dark:text-body-dark
+    @apply font-michroma -ml-1 text-heading-light dark:text-body-dark
   }
 
-  p, a {
-    @apply font-pp-neue-montreal text-body-light dark:text-body-dark
+  p, a, span {
+    @apply font-pp-neue-montreal text-base text-body-light dark:text-body-dark
   }
 }
 
