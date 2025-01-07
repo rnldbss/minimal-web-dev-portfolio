@@ -41,7 +41,7 @@
     @apply font-michroma -ml-1 text-heading-light dark:text-body-dark
   }
 
-  p, a, span {
+  p, a, span,li {
     @apply font-pp-neue-montreal text-base text-body-light dark:text-body-dark
   }
 }

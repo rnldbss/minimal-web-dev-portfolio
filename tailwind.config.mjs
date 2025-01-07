@@ -8,6 +8,7 @@ export default {
       "background-light": '#f3f6f7',
       "background-dark": '#213335',
       "body-light": '#435156',   
+      "body-lighter": '#7b8589', 
       "body-dark": '#e7eef0',
       "heading-light": '#435358',   
       "heading-dark": '#e7eef0',
