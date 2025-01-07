@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import aboutImage from "../assets/images/test.jpg";
+---
+
+<section class="pt-32 space-y-8">
+  <div class="flex gap-10">
+    <div class="flex gap-52">
+      <div class="space-y-4">
+        <p>
+          I'm a 21-year-old student at Purdue University currently studying web
+          development and design.
+        </p>
+        <p>
+          As I've grown as a developer, I've worked alongside senior designers
+          and developers who have raised my standards for whats expected of any
+          web application.
+        </p>
+        <p>
+          Through these experiences, I've had the opportunity to create
+          memorable products that are not only enjoyable to use but are written
+          in code that's maintainable and easy to understand.
+        </p>
+      </div>
+    </div>
+    <Image src={aboutImage} class="object-cover w-2/3" alt="Ronald" />
+  </div>
+</section>

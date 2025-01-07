@@ -1,0 +1,17 @@
+---
+import Nav from "../components/Nav.astro";
+import NavMobile from "../components/NavMobile.astro";
+import ThemeSwitcherButton from "../components/ThemeSwitcherButton.astro";
+---
+
+<header class="h-10 z-50 fixed inset-0 w-full color-primary px-10">
+  <div class="relative z-20 h-full flex gap-10 items-center w-full">
+    <span class="font-michroma text-xl mr-auto"></span>
+    <Nav />
+    <NavMobile />
+    <ThemeSwitcherButton />
+  </div>
+
+  <div class="absolute left-6 w-[calc(100%-48px)] border-b-2 border-primary">
+  </div>
+</header>
