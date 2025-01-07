@@ -1,10 +1,17 @@
 ---
 import PortfolioCard from "./PortfolioCard.astro";
+import PortfolioList from "./PortfolioList.astro";
 ---
 
 <section class="pt-32 space-y-8">
   <h2 class="text-7xl">Portfolio</h2>
-  <div>
+  <div class="flex flex-col gap-20">
     <PortfolioCard />
+    <PortfolioCard />
+    <PortfolioCard />
+  </div>
+  <div class="space-y-4">
+    <h3 class="text-2xl">More projects</h3>
+    <PortfolioList />
   </div>
 </section>
