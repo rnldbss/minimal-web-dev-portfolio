@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../../sanity/lib/load-query";
+import MyPortableText from "../../components/MyPortableText.astro";
+import { Image } from "astro:assets";
+import { urlFor } from "../../sanity/lib/image";
+
+export async function getStaticPaths() {
+  const { data: projects } = await loadQuery<SanityDocument[]>({
+    query: `*[_type == "project"]`,
+  });
+
+  return projects.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
+}
+
+const { params } = Astro;
+
+const { data: project } = await loadQuery({
+  query: `*[_type == "project" && slug.current == $slug][0]`,
+  params,
+});
+---
+
+<Layout>
+  <h1 class="text-6xl pt-32">{project.title}</h1>
+  <h2>{project.tagLine}</h2>
+  <MyPortableText content={project.projectOverview.body} />
+  <MyPortableText content={project.body} />
+  <img src={urlFor(project.mainImage)} alt="re" />
+</Layout>

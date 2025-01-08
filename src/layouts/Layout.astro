@@ -1,7 +1,17 @@
 ---
+import { VisualEditing } from "@sanity/astro/visual-editing";
+
 import "../styles/main.css";
 import ThemeSwitcherScript from "../components/scripts/theme-swicther-script.astro";
 import Header from "../components/Header.astro";
+
+export type props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+const visualEditingEnabled =
+  import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == "true";
 ---
 
 <!doctype html>
@@ -17,6 +27,7 @@ import Header from "../components/Header.astro";
   <body class="color-primary px-10 relative">
     <Header />
     <slot />
+    <VisualEditing enabled={visualEditingEnabled} />
   </body>
 </html>
 
