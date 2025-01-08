@@ -23,6 +23,10 @@ export default {
       "pp-neue-montreal": ["PP Neue Montreal", "sans serif"]
     },
 
+    maxWidth: {
+        'line-length-optimal': '50em', // Optimal for readability
+      },
+
     
   },
 

@@ -50,6 +50,18 @@
   .color-primary {
     @apply bg-background-light dark:bg-background-dark
   }
+
+.list-container li {
+  @apply border-b border-primary py-1 flex items-center justify-between;
+}
+
+.list-container li:first-of-type {
+  @apply border-t;
+}
+}
+
+@layer components {
+  
 }
 
 

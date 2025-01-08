@@ -1,0 +1,41 @@
+---
+import { PortableText } from "astro-portabletext";
+
+interface Props {
+  content: any[];
+}
+---
+
+<PortableText value={Astro.props.content}>
+  <!-- Handle blocks -->
+  <fragment slot="block">
+    {
+      ({ Component, props, children }) => {
+        const node = props.node;
+
+        // Handle headings
+        if (["h1", "h2", "h3", "h4"].includes(node.style)) {
+          const text =
+            node.children?.map((child: any) => child.text).join("") || "";
+
+          const id = text.toLowerCase().replace(/\s+/g, "-");
+          const Tag = node.style as keyof JSX.IntrinsicElements;
+          return <Tag id={id}>{children}</Tag>;
+        }
+
+        // For non-heading blocks, ensure children are rendered
+        return <Component {...props}>{children}</Component>;
+      }
+    }
+  </fragment>
+
+  <!-- Handle marks (e.g., strong, em) -->
+  <fragment slot="mark">
+    {
+      ({ Component, props, children }) => {
+        // Render inline elements properly
+        return <Component {...props}>{children}</Component>;
+      }
+    }
+  </fragment>
+</PortableText>
