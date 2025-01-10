@@ -37,6 +37,11 @@ export const projectType = defineType({
       },
       group: 'hero'
     }),
+     defineField({
+      name: "linkLabel",
+      type: "string",
+      group: 'hero'
+    }),
     defineField({
       name: "tagLine",
       type: "string",
@@ -49,7 +54,7 @@ export const projectType = defineType({
     }),
     defineField({
       name: "launchYear",
-      type: "datetime",
+      type: "string",
       group: 'hero'
     }),
     defineField({

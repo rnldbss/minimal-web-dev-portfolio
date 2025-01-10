@@ -22,7 +22,17 @@ export const textAndDetailsWithImageType = defineType({
           {name: 'detail', type: 'string',}
             ),
       ]
+    }), 
+    defineField({
+      name: 'techStack',
+      type: 'array',
+      of: [
+        defineArrayMember(
+          {name: 'detail', type: 'twoStrings'}
+            ),
+      ]
     }),
+   
     defineField({
       name: 'image',
       type: 'customImage',

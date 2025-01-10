@@ -1,0 +1,22 @@
+---
+interface TechStackItem {
+  itemOne: string;
+  itemTwo: string;
+}
+
+interface Props {
+  listItems: TechStackItem[];
+}
+const { listItems } = Astro.props as Props;
+---
+
+<ul class="list-container">
+  {
+    listItems.map((item) => (
+      <li>
+        <span>{item.itemOne}</span>
+        <span class="text-body-lighter">{item.itemTwo}</span>
+      </li>
+    ))
+  }
+</ul>

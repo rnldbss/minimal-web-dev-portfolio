@@ -5,7 +5,8 @@ import { loadQuery } from "../../sanity/lib/load-query";
 import MyPortableText from "../../components/portable-text/MyPortableText.astro";
 import { urlFor } from "../../sanity/lib/image";
 import { generateTOC } from "../../js/toc"; // Import TOC utility
-
+import TwoItemsList from "../../components/TwoItemsList.astro";
+import AllProjectsList from "../../components/AllProjectsList.astro";
 // GROQ Query
 export async function getStaticPaths() {
   const { data: projects } = await loadQuery<SanityDocument[]>({
@@ -25,46 +26,44 @@ const { data: project } = await loadQuery({
   params,
 });
 
+// Fetch all projects for listing
+const { data: allProjects } = await loadQuery<SanityDocument[]>({
+  query: `*[_type == "project"]`,
+});
+
 // Generate TOC from `project.body`
 const toc = generateTOC(project.body);
-console.log(project.body);
+console.log(project.projectOverview.techStack);
 ---
 
 <Layout>
   <section>
     <!-- Image Section -->
-    <div class="pt-14">
+    <div class="pt-14 min-h-screen">
       <img
-        class="max-h-[50vh] w-full object-cover"
+        class="max-h-[45vh] w-full object-cover"
         src={urlFor(project.mainImage)}
         alt={project.title}
       />
 
       <!-- Header Section -->
-      <div class="flex pt-4">
-        <div class="w-2/3">
+      <div class="pt-4">
+        <div>
           <h1 class="text-2xl text-body-lighter">{project.tagLine}</h1>
-          <h2 class="text-8xl">{project.title}</h2>
-          <div class="max-w-lg pt-4">
+          <h2 class="text-8xl pt-4">{project.title}</h2>
+        </div>
+        <div class="flex justify-between pt-8">
+          <div class="w-1/2">
             <MyPortableText content={project.projectOverview?.body} />
           </div>
-        </div>
-        <div class="w-1/3">
-          <ul class="list-container">
-            {
-              project.projectOverview?.details?.map((detail) => (
-                <li>
-                  <span>{detail} </span>
-                  <span class="text-body-lighter">web development</span>
-                </li>
-              ))
-            }
-          </ul>
+          <div class="w-1/2 mt-auto">
+            <TwoItemsList listItems={project.projectOverview.techStack} />
+          </div>
         </div>
       </div>
     </div>
     <div class="flex">
-      <div class="max-w-line-length-optimal">
+      <div class="max-w-[50em]">
         <MyPortableText content={project.body} />
       </div><aside>
         <nav>
@@ -81,5 +80,9 @@ console.log(project.body);
         </nav>
       </aside>
     </div>
+  </section>
+  <section>
+    <h2 class="text-4xl">All Projects</h2>
+    <AllProjectsList listItems={allProjects} />
   </section>
 </Layout>

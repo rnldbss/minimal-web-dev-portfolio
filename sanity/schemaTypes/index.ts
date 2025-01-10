@@ -8,6 +8,7 @@ import { postType } from "./documents/blog/post";
 import { projectType } from "./documents/portfolio/project";
 import { textAndDetailsWithImageType } from "./plugins/textAndDetailsWithImage";
 import { headingWithTextType } from "./plugins/headingWithText";
+import { twoStringsType } from "./plugins/twoStrings";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,5 +21,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pageType,
     textAndDetailsWithImageType,
     headingWithTextType,
+    twoStringsType
   ],
 };
