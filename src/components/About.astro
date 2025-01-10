@@ -5,8 +5,8 @@ const { heading, body, image, imageAlt } = Astro.props;
 ---
 
 <section class="pt-10 space-y-2 md:space-y-8">
-  <h2 class="text-2xl">{heading}</h2>
-  <div class="flex flex-col md:flex-row gap-2 md:gap-10">
+  <h2 class="text-2xl sm:text-3xl md:text-6xl">{heading}</h2>
+  <div class="flex flex-col md:flex-row gap-2 md:gap-5">
     <div>
       <MyPortableText content={body} />
     </div>

@@ -4,14 +4,16 @@ import MyPortableText from "./portable-text/MyPortableText.astro";
 const socialIconsSize = "30px";
 const socialIconsColor = "fill-primary hover:fill-accent";
 
-const { heading, body } = Astro.props;
+const { tagLine, heading, body } = Astro.props;
 ---
 
 <section class="h-screen grid grid-cols-6 grid-rows-5">
-  <div class="space-y-4 pb-4 row-start-1 row-span-3 mt-auto col-span-3">
+  <div
+    class="space-y-4 pb-4 row-start-1 row-span-4 md:row-span-3 mt-auto col-span-6 md:col-span-3"
+  >
     <span>Welcome</span>
-    <h1 class="text-4xl">
-      {heading}
+    <h1 class="text-3xl md:text-4xl">
+      {tagLine}
     </h1>
     <div class="max-w-md">
       <MyPortableText content={body} />
@@ -83,9 +85,19 @@ const { heading, body } = Astro.props;
     </div>
   </div>
 
-  <div class="row-start-2 col-start-4 mt-auto w-0.5 bg-primary h-[200%]"></div>
-  <div class="row-start-2 col-start-5 mt-auto w-0.5 bg-primary h-[200%]"></div>
-  <div class="row-start-2 col-start-6 mt-auto w-0.5 bg-primary h-[200%]"></div>
-
-  <div class="row-start-4 mb-auto h-0.5 bg-primary col-span-full"></div>
+  <div class="hidden row-start-2 col-start-4 mt-auto w-0.5 bg-primary h-[200%]">
+  </div>
+  <div class="hidden row-start-2 col-start-5 mt-auto w-0.5 bg-primary h-[200%]">
+  </div>
+  <div class="hidden row-start-2 col-start-6 mt-auto w-0.5 bg-primary h-[200%]">
+  </div>
+  <div
+    class="row-start-5 md:row-start-4 mb-auto h-0.5 bg-primary col-span-full"
+  >
+  </div>
+  <h2
+    class="text-4xl pb-2 md:text-6xl lg:text-7xl row-start-5 col-start-1 col-span-full mt-auto"
+  >
+    {heading}
+  </h2>
 </section>

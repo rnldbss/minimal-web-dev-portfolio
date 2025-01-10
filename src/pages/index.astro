@@ -22,7 +22,11 @@ const { data: allProjects } = await loadQuery<Projects[]>({
 ---
 
 <Layout>
-  <Hero heading={homeContent.heroHeading} body={homeContent.heroSubheading} />
+  <Hero
+    tagLine={homeContent.heroHeading}
+    heading={homeContent.aboutHeading}
+    body={homeContent.heroSubheading}
+  />
   <About
     heading={homeContent.aboutHeading}
     body={homeContent.aboutBody}
