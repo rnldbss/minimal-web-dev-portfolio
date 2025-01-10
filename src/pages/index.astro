@@ -4,11 +4,35 @@ import Hero from "../components/Hero.astro";
 import Portfolio from "../components/Portfolio.astro";
 import Skills from "../components/Skills.astro";
 import Layout from "../layouts/Layout.astro";
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../sanity/lib/load-query";
+import { urlFor } from "../sanity/lib/image";
+
+const { params } = Astro;
+
+const { data: homeContent } = await loadQuery<HomeContent>({
+  query: `*[_type == "home"][0]`,
+  params,
+});
+
+// Fetch all projects for listing
+const { data: allProjects } = await loadQuery<Projects[]>({
+  query: `*[_type == "project"]`,
+});
 ---
 
 <Layout>
-  <Hero />
-  <About />
-  <Skills />
-  <Portfolio />
+  <Hero heading={homeContent.heroHeading} body={homeContent.heroSubheading} />
+  <About
+    heading={homeContent.aboutHeading}
+    body={homeContent.aboutBody}
+    image={urlFor(homeContent.aboutImage)}
+    imageAlt={homeContent.aboutImage.alt}
+  />
+  <Skills
+    heading={homeContent.skillsHeading}
+    body={homeContent.skillsSubheading}
+    listItems={homeContent.skillsList}
+  />
+  <Portfolio allProjects={allProjects} />
 </Layout>

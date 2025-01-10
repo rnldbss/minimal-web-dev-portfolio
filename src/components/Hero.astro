@@ -1,19 +1,22 @@
 ---
+import MyPortableText from "./portable-text/MyPortableText.astro";
+
 const socialIconsSize = "30px";
 const socialIconsColor = "fill-primary hover:fill-accent";
+
+const { heading, body } = Astro.props;
 ---
 
 <section class="h-screen grid grid-cols-6 grid-rows-5">
   <div class="space-y-4 pb-4 row-start-1 row-span-3 mt-auto col-span-3">
     <span>Welcome</span>
     <h1 class="text-4xl">
-      Frontend developer <br />Building things for the web
+      {heading}
     </h1>
-    <p class="max-w-md">
-      I’m a software engineer specializing in building (and occasionally
-      designing) exceptional digital experiences. Currently, I’m focused on
-      building accessible, human-centered products at Upstatement.
-    </p>
+    <div class="max-w-md">
+      <MyPortableText content={body} />
+    </div>
+
     <div class="flex gap-3\">
       <svg
         width={socialIconsSize}
@@ -79,9 +82,7 @@ const socialIconsColor = "fill-primary hover:fill-accent";
       </svg>
     </div>
   </div>
-  <h2 class="text-8xl row-start-4 row-span-2 col-span-full mt-auto">
-    Ronald Bessa
-  </h2>
+
   <div class="row-start-2 col-start-4 mt-auto w-0.5 bg-primary h-[200%]"></div>
   <div class="row-start-2 col-start-5 mt-auto w-0.5 bg-primary h-[200%]"></div>
   <div class="row-start-2 col-start-6 mt-auto w-0.5 bg-primary h-[200%]"></div>

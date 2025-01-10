@@ -6,11 +6,12 @@ interface TechStackItem {
 
 interface Props {
   listItems: TechStackItem[];
+  containerStyles: string;
 }
-const { listItems } = Astro.props as Props;
+const { listItems, containerStyles } = Astro.props as Props;
 ---
 
-<ul class="list-container">
+<ul class={`list-container ${containerStyles}`}>
   {
     listItems.map((item) => (
       <li>

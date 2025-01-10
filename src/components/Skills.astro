@@ -1,56 +1,16 @@
+---
+import MyPortableText from "./portable-text/MyPortableText.astro";
+import TwoItemsList from "./TwoItemsList.astro";
+
+const { heading, body, listItems } = Astro.props;
+---
+
 <section class="pt-32 space-y-8">
-  <h2 class="text-7xl">My Skills</h2>
+  <h2 class="text-7xl">{heading}</h2>
   <div class="space-y-4">
-    <p class="max-w-md">
-      Through my studies, I've gained a solid understanding of computer science
-      and web development concepts, and have dedicated a lot of my free time to
-      apply these concepts to real-world scenarios and applications.
-    </p>
-    <ul class="list-container columns-2 gap-20">
-      <li>
-        <span>Javascript</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>React</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>GraphQL</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>Typescript</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>Astro</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>HTML & CSS</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>Tailwind CSS</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>Sanity CMS</span>
-        <span class="text-body-lighter">content management</span>
-      </li>
-      <li>
-        <span>Git</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-      <li>
-        <span>Figma</span>
-        <span class="text-body-lighter">UI/UX design</span>
-      </li>
-      <li>
-        <span>Gatsby.js</span>
-        <span class="text-body-lighter">web development</span>
-      </li>
-    </ul>
+    <div class="max-w-md cou">
+      <MyPortableText content={body} />
+    </div>
+    <TwoItemsList containerStyles="columns-2" listItems={listItems} />
   </div>
 </section>

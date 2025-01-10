@@ -21,7 +21,7 @@ const { listItems } = Astro.props as Props;
           {item.title}
           <span class="text-xs ml-3">{item.launchYear}</span>
         </span>
-        <span class="text-body-lighter">{item.tagLine}</span>
+        <span class="text-body-lighter hidden md:inline">{item.tagLine}</span>
         <a href={`/portfolio/${item.slug.current}`} class="text-body-lighter">
           {item.linkLabel}
         </a>

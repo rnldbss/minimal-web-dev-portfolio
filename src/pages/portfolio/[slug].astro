@@ -4,12 +4,33 @@ import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
 import MyPortableText from "../../components/portable-text/MyPortableText.astro";
 import { urlFor } from "../../sanity/lib/image";
-import { generateTOC } from "../../js/toc"; // Import TOC utility
+import { generateTOC } from "../../js/toc";
 import TwoItemsList from "../../components/TwoItemsList.astro";
 import AllProjectsList from "../../components/AllProjectsList.astro";
-// GROQ Query
+
+// Define TypeScript interfaces for Project data
+interface TechStackItem {
+  name: string;
+  icon?: string;
+}
+
+interface ProjectOverview {
+  body: any;
+  techStack: TechStackItem[];
+}
+
+interface Project extends SanityDocument {
+  title: string;
+  tagLine: string;
+  mainImage: any;
+  body: any;
+  projectOverview: ProjectOverview;
+  slug: { current: string };
+}
+
+// GROQ Query for Static Paths
 export async function getStaticPaths() {
-  const { data: projects } = await loadQuery<SanityDocument[]>({
+  const { data: projects } = await loadQuery<Project[]>({
     query: `*[_type == "project"]`,
   });
 
@@ -21,19 +42,18 @@ export async function getStaticPaths() {
 const { params } = Astro;
 
 // Fetch Project Data
-const { data: project } = await loadQuery({
+const { data: project } = await loadQuery<Project>({
   query: `*[_type == "project" && slug.current == $slug][0]`,
   params,
 });
 
 // Fetch all projects for listing
-const { data: allProjects } = await loadQuery<SanityDocument[]>({
+const { data: allProjects } = await loadQuery<Project[]>({
   query: `*[_type == "project"]`,
 });
 
 // Generate TOC from `project.body`
 const toc = generateTOC(project.body);
-console.log(project.projectOverview.techStack);
 ---
 
 <Layout>
@@ -65,7 +85,8 @@ console.log(project.projectOverview.techStack);
     <div class="flex">
       <div class="max-w-[50em]">
         <MyPortableText content={project.body} />
-      </div><aside>
+      </div>
+      <aside>
         <nav>
           <h2>Table of Contents</h2>
           <ul>
