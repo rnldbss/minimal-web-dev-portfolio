@@ -8,21 +8,25 @@ const { allProjects } = Astro.props;
 ---
 
 <section class="pt-32 space-y-8">
-  <h2 class="text-7xl">Portfolio</h2>
+  <h2 class="text-2xl sm:text-3xl md:text-6xl">Portfolio</h2>
   <div class="flex flex-col gap-20">
     {
-      allProjects.map((item) => (
-        <PortfolioCard
-          cardHeading={item.title}
-          cardBody={item.projectOverview.body}
-          cardImage={urlFor(item.mainImage)}
-          cardImageAlt={item.mainImage.alt}
-        />
-      ))
+      allProjects
+        .slice(0, 3)
+        .map((item) => (
+          <PortfolioCard
+            cardHeading={item.title}
+            cardBody={item.projectOverview.body}
+            cardImage={urlFor(item.mainImage)}
+            cardImageAlt={item.mainImage.alt}
+            cardList={item.projectOverview.techStack}
+            projectSlug={item.slug.current}
+          />
+        ))
     }
   </div>
-  <div class="space-y-4 h-screen">
-    <h3 class="text-2xl">More projects</h3>
+  <div class="space-y-4">
+    <h3 class="text-2xl sm:text-3xl">More projects</h3>
     <AllProjectsList listItems={allProjects} />
   </div>
 </section>
