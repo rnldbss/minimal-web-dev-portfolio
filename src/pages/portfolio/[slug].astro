@@ -58,31 +58,36 @@ const toc = generateTOC(project.body);
 
 <Layout>
   <section>
-    <!-- Image Section -->
     <div class="pt-14 min-h-screen">
       <img
         class="max-h-[45vh] w-full object-cover"
         src={urlFor(project.mainImage)}
         alt={project.title}
       />
-
-      <!-- Header Section -->
       <div class="pt-4">
         <div>
-          <h1 class="text-2xl text-body-lighter">{project.tagLine}</h1>
-          <h2 class="text-8xl pt-4">{project.title}</h2>
-        </div>
-        <div class="flex justify-between pt-8">
-          <div class="w-1/2">
+          <h1 class="text-xl md:text-2xl text-body-lighter">
+            {project.tagLine}
+          </h1>
+          <h2 class="text-4xl md:text-6xl lg:text-7xl pt-2">{project.title}</h2>
+          <ul class="flex gap-3 pt-5">
+            {
+              project.projectOverview.techStack.map((item) => (
+                <li class="border border-primary px-2 py-1">{item.itemOne}</li>
+              ))
+            }
+          </ul>
+          <div class="max-w-2xl pt-5">
             <MyPortableText content={project.projectOverview?.body} />
-          </div>
-          <div class="w-1/2 mt-auto">
-            <TwoItemsList listItems={project.projectOverview.techStack} />
           </div>
         </div>
       </div>
     </div>
-    <div class="flex">
+    <!-- <div class="max-w-2xl space-y-4">
+      <h3 class="text-2xl">Tech</h3>
+      <TwoItemsList listItems={project.projectOverview.techStack} />
+    </div> -->
+    <div class="flex pt-10">
       <div class="max-w-[50em]">
         <MyPortableText content={project.body} />
       </div>
