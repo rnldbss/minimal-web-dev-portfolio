@@ -1,44 +1,57 @@
 ---
+// Import PortableText component
 import { PortableText } from "astro-portabletext";
 
-interface Props {
-  content: any[];
+// Define custom types for fragment components
+interface BlockProps {
+  Component: (props: any) => JSX.Element;
+  props: { node: any };
+  children: any;
 }
+
+interface ListProps {
+  Component: (props: any) => JSX.Element;
+  props: { type: string };
+  children: any;
+}
+
+interface MarkProps {
+  Component: (props: any) => JSX.Element;
+  props: Record<string, any>;
+  children: any;
+}
+
+// Tailwind classes for headings
+const headingClasses: Record<string, string> = {
+  h1: "text-5xl pb-2 pt-8 font-pp-neue-montreal",
+  h2: "text-3xl pb-2 pt-8 font-pp-neue-montreal",
+  h3: "text-2xl pb-2 pt-8 font-pp-neue-montreal",
+  h4: "text-xl pb-2 pt-8 font-pp-neue-montreal",
+};
 ---
 
 <PortableText value={Astro.props.content}>
-  <!-- Handle blocks -->
+  <!-- 📝 Block Elements -->
   <fragment slot="block">
     {
-      ({ Component, props, children }) => {
-        const node = props.node;
+      ({ Component, props, children }: BlockProps) => {
+        const { node } = props;
 
-        // Handle headings with Tailwind classes
         if (["h1", "h2", "h3", "h4"].includes(node.style)) {
           const text =
             node.children?.map((child: any) => child.text).join("") || "";
-
           const id = text.toLowerCase().replace(/\s+/g, "-");
           const Tag = node.style as keyof JSX.IntrinsicElements;
 
-          // Define Tailwind classes based on the heading level
-          const classes = {
-            h1: "text-5xl mb-4",
-            h2: "text-3xl mb-4",
-            h3: "text-2xl mb-4",
-            h4: "text-xl mb-4",
-          };
-
           return (
-            <Tag id={id} class={classes[node.style]}>
+            <Tag id={id} class={headingClasses[node.style]}>
               {children}
             </Tag>
           );
         }
 
-        // For non-heading blocks, ensure children are rendered
         return (
-          <Component class:list={"mb-2 md:mb-[1.4em]"} {...props}>
+          <Component {...props} class="mb-2 md:mb-3">
             {children}
           </Component>
         );
@@ -46,13 +59,30 @@ interface Props {
     }
   </fragment>
 
-  <!-- Handle marks (e.g., strong, em) -->
+  <!-- ✅ Lists (Ordered & Unordered) -->
+  <fragment slot="list">
+    {
+      ({ Component, props, children }: ListProps) => {
+        const listClass =
+          props.type === "bullet"
+            ? "list-decimal list-inside mb-[1.4em]"
+            : "list-disc list-inside mb-[1.4em]";
+
+        return (
+          <Component {...props} class={listClass}>
+            {children}
+          </Component>
+        );
+      }
+    }
+  </fragment>
+
+  <!-- 🔖 Inline Marks (Bold, Italics, etc.) -->
   <fragment slot="mark">
     {
-      ({ Component, props, children }) => {
-        // Render inline elements properly
-        return <Component {...props}>{children}</Component>;
-      }
+      ({ Component, props, children }: MarkProps) => (
+        <Component {...props}>{children}</Component>
+      )
     }
   </fragment>
 </PortableText>

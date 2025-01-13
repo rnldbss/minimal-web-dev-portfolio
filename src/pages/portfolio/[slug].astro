@@ -87,14 +87,14 @@ const toc = generateTOC(project.body);
       <h3 class="text-2xl">Tech</h3>
       <TwoItemsList listItems={project.projectOverview.techStack} />
     </div> -->
-    <div class="flex pt-10">
+    <article class="flex pt-10 gap-10 relative">
       <div class="max-w-[50em]">
         <MyPortableText content={project.body} />
       </div>
-      <aside>
+      <aside class="border-2 border-primary self-start sticky top-16 p-5">
         <nav>
-          <h2>Table of Contents</h2>
-          <ul>
+          <h2 class="pb-2">Table of Contents</h2>
+          <ul class="list-disc list-inside">
             {
               toc.map(({ text, id }) => (
                 <li>
@@ -105,7 +105,7 @@ const toc = generateTOC(project.body);
           </ul>
         </nav>
       </aside>
-    </div>
+    </article>
   </section>
   <section>
     <h2 class="text-4xl">All Projects</h2>
