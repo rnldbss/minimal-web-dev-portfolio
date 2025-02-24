@@ -4,11 +4,21 @@ export default {
 
   theme: {
     extend: {
+      fontSize: {
+        // @link https://utopia.fyi/type/calculator?c=320,17,1.2,1240,18,1.618,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+        xs: "clamp(0.4297rem, 0.845rem + -0.5359vw, 0.7378rem)",
+        sm: "clamp(0.6953rem, 0.9515rem + -0.3306vw, 0.8854rem)",
+        base: "clamp(1.0625rem, 1.0408rem + 0.1087vw, 1.125rem)",
+        lg: "clamp(1.275rem, 1.0853rem + 0.9483vw, 1.8203rem)",
+        xl: "clamp(1.53rem, 1.0378rem + 2.4612vw, 2.9452rem)",
+        "2xl": "clamp(1.836rem, 0.8171rem + 5.0944vw, 4.7653rem)",
+        "3xl": "clamp(2.2032rem, 0.2877rem + 9.5774vw, 7.7102rem)",
+        "4xl": "clamp(2.6438rem, -0.7757rem + 17.0979vw, 12.4751rem)",
+      },
       colors: {
         transparent: "transparent",
         accent: {
           primary: "#2bc2c2",
-          secondary: "#E43C13", //"#BAF400",
         },
         on: {
           level: {
@@ -42,6 +52,7 @@ export default {
       michroma: ["Michroma", "sans serif"],
       "pp-neue-montreal": ["PP Neue Montreal", "sans serif"],
       anek: ["Anek", "sans serif"],
+      cal: ["Cal", "sans serif"],
     },
   },
 

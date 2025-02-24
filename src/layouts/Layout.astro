@@ -26,7 +26,8 @@ const visualEditingEnabled =
   </head>
   <body class="color-primary px-2 md:px-10 relative">
     <Header />
-    <slot />
+    <main class="max-w-7xl mx-auto"><slot /></main>
+    
     <VisualEditing enabled={visualEditingEnabled} />
   </body>
 </html>

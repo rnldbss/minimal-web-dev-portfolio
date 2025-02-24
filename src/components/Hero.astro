@@ -2,7 +2,7 @@
 import MyPortableText from "./portable-text/MyPortableText.astro";
 
 const socialIconsSize = "30px";
-const socialIconsColor = "fill-primary hover:fill-accent";
+const socialIconsColor = "fill-on-level-0 dark:fill-on-level-0-dark hover:fill-accent-primary";
 
 const { tagLine, heading, body } = Astro.props;
 ---
@@ -12,9 +12,9 @@ const { tagLine, heading, body } = Astro.props;
     class="space-y-4 pb-4 row-start-1 row-span-4 md:row-span-3 mt-auto col-span-6 md:col-span-3"
   >
     <span>Welcome</span>
-    <h1 class="text-3xl md:text-4xl">
-      {tagLine}
-    </h1>
+    
+     
+    <MyPortableText content={tagLine} />
     <div class="max-w-md">
       <MyPortableText content={body} />
     </div>
@@ -95,9 +95,5 @@ const { tagLine, heading, body } = Astro.props;
     class="row-start-5 md:row-start-4 mb-auto h-0.5 bg-level-1 dark:bg-level-1-dark col-span-full"
   >
   </div>
-  <h2
-    class="text-4xl pb-2 md:text-6xl lg:text-7xl row-start-5 col-start-1 col-span-full mt-auto"
-  >
-    {heading}
-  </h2>
+ 
 </section>
