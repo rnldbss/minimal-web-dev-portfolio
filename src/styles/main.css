@@ -31,6 +31,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Anek";
+  src: url("/fonts/Anek/AnekLatin-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
