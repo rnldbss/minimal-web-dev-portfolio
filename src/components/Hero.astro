@@ -1,15 +1,16 @@
 ---
 import MyPortableText from "./portable-text/MyPortableText.astro";
+import { urlFor } from "../sanity/lib/image";
 
 const socialIconsSize = "30px";
 const socialIconsColor = "fill-on-level-0 dark:fill-on-level-0-dark hover:fill-accent-primary";
 
-const { tagLine, heading, body } = Astro.props;
+const { tagLine, heading, body,image } = Astro.props;
 ---
 
-<section class="h-screen grid grid-cols-6 grid-rows-5">
+<section class="grid grid-flow-row grid-cols-2">
   <div
-    class="space-y-4 pb-4 row-start-1 row-span-4 md:row-span-3 mt-auto col-span-6 md:col-span-3"
+    class="my-auto"
   >
     <span>Welcome</span>
     
@@ -84,16 +85,10 @@ const { tagLine, heading, body } = Astro.props;
       </svg>
     </div>
   </div>
+  <div>
+        <img src={urlFor(image)} class="object-cover" alt={image.alt} />
 
-  <div class="hidden row-start-2 col-start-4 mt-auto w-0.5 bg-level-1 dark:bg-level-1-dark h-[200%]">
   </div>
-  <div class="hidden row-start-2 col-start-5 mt-auto w-0.5 bg-level-1 dark:bg-level-1-dark h-[200%]">
-  </div>
-  <div class="hidden row-start-2 col-start-6 mt-auto w-0.5 bg-level-1 dark:bg-level-1-dark h-[200%]">
-  </div>
-  <div
-    class="row-start-5 md:row-start-4 mb-auto h-0.5 bg-level-1 dark:bg-level-1-dark col-span-full"
-  >
-  </div>
+
  
 </section>

@@ -38,7 +38,11 @@ export const homeType = defineType({
       of: [defineArrayMember({ name: "socialIcon", type: "imageWithLink" })],
       group: "hero",
     }),
-
+    defineField({
+      name: "heroImage",
+      type: "customImage",
+      group: "hero",
+    }),
     defineField({
       name: "aboutHeading",
       type: "string",
