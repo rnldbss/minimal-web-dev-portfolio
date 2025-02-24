@@ -33,7 +33,8 @@
 }
 @font-face {
   font-family: "Anek";
-  src: url("/fonts/Anek/AnekLatin-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("/fonts/Anek/AnekLatin-VariableFont_wdth,wght.ttf")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -44,38 +45,40 @@
 @tailwind utilities;
 
 @layer base {
-  h1,h2,h3,h4,h5,h6 {
-    @apply font-michroma -ml-1 text-heading-light dark:text-body-dark
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-michroma -ml-1 text-on-level-0 dark:text-on-level-0-dark;
   }
 
-  p, a, span,li {
-    @apply font-pp-neue-montreal text-base text-body-light dark:text-body-dark
+  p,
+  a,
+  span,
+  li {
+    @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark;
   }
 }
 
 @layer utilities {
   .color-primary {
-    @apply bg-background-light dark:bg-background-dark
+    @apply bg-level-0 dark:bg-level-0-dark;
   }
 
-.list-container li {
-  @apply border-b border-primary py-1 flex items-center justify-between;
-}
+  .list-container li {
+    @apply border-b border-level-1 dark:bg-level-1-dark py-1 flex items-center justify-between;
+  }
 
-.list-container li:first-of-type {
-  @apply border-t;
-}
+  .list-container li:first-of-type {
+    @apply border-t;
+  }
 }
 
 @layer components {
-  
 }
 
-
 .nav-blur-mask {
-     mask-image: linear-gradient(
-    to bottom,
-    black 0% 50%,
-    transparent 50% 100%
-  );
-  }
+  mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
+}

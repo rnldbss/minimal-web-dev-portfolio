@@ -66,14 +66,14 @@ const toc = generateTOC(project.body);
       />
       <div class="pt-4">
         <div>
-          <h1 class="text-xl md:text-2xl text-body-lighter">
+          <h1 class="text-xl md:text-2xl">
             {project.tagLine}
           </h1>
           <h2 class="text-4xl md:text-6xl lg:text-7xl pt-2">{project.title}</h2>
           <ul class="flex gap-3 pt-5">
             {
               project.projectOverview.techStack.map((item) => (
-                <li class="border border-primary px-2 py-1">{item.itemOne}</li>
+                <li class="border border-level-1 dark:border-level-1-dark px-2 py-1">{item.itemOne}</li>
               ))
             }
           </ul>
