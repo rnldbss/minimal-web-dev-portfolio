@@ -41,7 +41,7 @@
 }
 
 @font-face {
-  font-family: "Anek";
+  font-family: "Cal";
   src: url("/fonts/Cal/CalSans-SemiBold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
@@ -59,7 +59,15 @@
   h4,
   h5,
   h6 {
-    @apply font-michroma -ml-1 text-on-level-0 dark:text-on-level-0-dark;
+    @apply font-cal leading-none text-on-level-0 dark:text-on-level-0-dark;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
   }
 
   p,
@@ -67,6 +75,10 @@
   span,
   li {
     @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark;
+  }
+
+  section {
+    @apply pb-20;
   }
 }
 
@@ -81,6 +93,10 @@
 
   .list-container li:first-of-type {
     @apply border-t;
+  }
+
+  .paragraph-spacing {
+    @apply [&>p]:mb-2;
   }
 }
 

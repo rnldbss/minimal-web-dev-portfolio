@@ -2,25 +2,22 @@
 import MyPortableText from "./portable-text/MyPortableText.astro";
 import { urlFor } from "../sanity/lib/image";
 
-const socialIconsSize = "30px";
+const socialIconsSize = "22px";
 const socialIconsColor = "fill-on-level-0 dark:fill-on-level-0-dark hover:fill-accent-primary";
 
 const { tagLine, heading, body,image } = Astro.props;
 ---
 
-<section class="grid grid-flow-row grid-cols-2">
+<section class="grid gap-5 grid-flow-row grid-cols-2 pt-20">
   <div
-    class="my-auto"
+    class="my-auto space-y-2"
   >
-    <span>Welcome</span>
-    
-     
-    <MyPortableText content={tagLine} />
-    <div class="max-w-md">
-      <MyPortableText content={body} />
-    </div>
+    <span class="text-accent-primary">Welcome</span>
 
-    <div class="flex gap-3">
+    <MyPortableText content={tagLine} />
+    <MyPortableText content={body} />
+
+    <div class="flex gap-2">
       <svg
         width={socialIconsSize}
         height={socialIconsSize}
@@ -86,7 +83,7 @@ const { tagLine, heading, body,image } = Astro.props;
     </div>
   </div>
   <div>
-        <img src={urlFor(image)} class="object-cover" alt={image.alt} />
+        <img src={urlFor(image)} class="object-cover rounded-md" alt={image.alt} />
 
   </div>
 

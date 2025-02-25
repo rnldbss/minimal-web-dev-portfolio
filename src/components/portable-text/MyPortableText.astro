@@ -23,10 +23,10 @@ interface MarkProps {
 
 // Tailwind classes for headings
 const headingClasses: Record<string, string> = {
-  h1: "text-5xl pb-2 pt-8 font-anek font-medium",
-  h2: "text-3xl pb-2 pt-8 font-anek font-medium",
-  h3: "text-2xl pb-2 pt-8 font-anek font-medium",
-  h4: "text-xl pb-2 pt-8 font-anek font-medium",
+  h1: "",
+  h2: "",
+  h3: "",
+  h4: "",
 };
 ---
 
@@ -51,7 +51,7 @@ const headingClasses: Record<string, string> = {
         }
 
         return (
-          <Component {...props} class="mb-2 md:mb-3">
+          <Component {...props} class="">
             {children}
           </Component>
         );
