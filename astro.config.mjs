@@ -5,6 +5,8 @@ import react from '@astrojs/react';
 import sanity from '@sanity/astro';
 import tailwind from '@astrojs/tailwind';
 
+import netlify from '@astrojs/netlify';
+
 const { PUBLIC_SANITY_PROJECT_ID } = loadEnv(process.env.PUBLIC_SANITY_PROJECT_ID, process.cwd(), "");
 const { PUBLIC_SANITY_DATASET } = loadEnv(process.env.PUBLIC_SANITY_DATASET, process.cwd(), "");
 
@@ -22,5 +24,7 @@ export default defineConfig({
       stega: {
         studioUrl: "/studio",
       },
-    }),]
+    }),],
+
+  adapter: netlify(),
 });
