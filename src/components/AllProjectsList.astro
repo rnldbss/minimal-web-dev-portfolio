@@ -13,16 +13,20 @@ interface Props {
 const { listItems } = Astro.props as Props;
 ---
 
-<ul class="list-container">
+<ul class="">
   {
     listItems.map((item) => (
-      <li>
-        <span>
-          {item.title}
-          <span class="text-xs ml-3">{item.launchYear}</span>
-        </span>
-        <span class=" hidden md:inline">{item.tagLine}</span>
-        <a href={`/portfolio/${item.slug.current}`} class="">
+      <li class="border-b border-accent-primary py-1 flex items-center justify-between">
+        <div class="flex justify-between items-center min-w-36">
+          <span>{item.title} </span>
+          <span class="text-xs">{item.launchYear}</span>
+        </div>
+
+        <span class="text-sm opacity-60 hidden md:inline">{item.tagLine}</span>
+        <a
+          href={`/portfolio/${item.slug.current}`}
+          class="text-sm md:hover:text-accent-primary"
+        >
           {item.linkLabel}
         </a>
       </li>

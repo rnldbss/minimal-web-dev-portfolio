@@ -1,0 +1,20 @@
+---
+import MyPortableText from "./portable-text/MyPortableText.astro";
+import { urlFor } from "../sanity/lib/image";
+const { image, company, date, position, description } = Astro.props;
+---
+
+<div class="flex gap-5">
+  <div>
+    <img
+      class="rounded w-26 aspect-square"
+      src={urlFor(image)}
+      alt={image.alt}
+    />
+  </div>
+  <div class="space-y-2">
+    <h3>{company}</h3>
+    <span>{date}</span>
+    <MyPortableText content={description} />
+  </div>
+</div>

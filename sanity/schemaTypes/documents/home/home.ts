@@ -20,6 +20,11 @@ export const homeType = defineType({
       name: "skills",
       icon: UlistIcon,
     },
+    {
+      title: "Experience",
+      name: "experience",
+      icon: UlistIcon,
+    },
   ],
   fields: [
     defineField({
@@ -74,5 +79,12 @@ export const homeType = defineType({
       of: [defineArrayMember({ name: "skillItem", type: "twoStrings" })],
       group: "skills",
     }),
+    defineField({
+      name: "experience",
+      type: "array",
+      of: [defineArrayMember({ type: "experience" })],
+      group: "experience",
+    }),
+    
   ],
 });

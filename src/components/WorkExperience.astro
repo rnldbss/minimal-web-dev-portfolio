@@ -1,0 +1,22 @@
+---
+import WorkExperienceCard from "./workExperienceCard.astro";
+
+const { workExperienceList } = Astro.props;
+---
+
+<section class="space-y-4">
+  <h2>Experience</h2>
+  {
+    workExperienceList.map((experience) => {
+      return (
+        <WorkExperienceCard
+          image={experience.logo}
+          company={experience.company}
+          date={experience.date}
+          position={experience.position}
+          description={experience.body}
+        />
+      );
+    })
+  }
+</section>

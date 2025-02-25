@@ -1,7 +1,30 @@
 ---
 import { PortableText } from "astro-portabletext";
 
+interface ListProps {
+  Component: (props: any) => JSX.Element;
+  props: { type: string };
+  children: any;
+}
+
 const { content } = Astro.props;
 ---
 
-<PortableText value={content}/>
+<PortableText value={content}
+  ><fragment slot="list">
+    {
+      ({ Component, props, children }: ListProps) => {
+        const listClass =
+          props.type === "bullet"
+            ? "list-decimal list-inside mb-4 ml-2 [&>li]:mb-2"
+            : "list-disc list-inside mb-4 ml-2 [&>li]:mb-2";
+
+        return (
+          <Component {...props} class={listClass}>
+            {children}
+          </Component>
+        );
+      }
+    }
+  </fragment>
+</PortableText>

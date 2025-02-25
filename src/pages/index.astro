@@ -6,6 +6,7 @@ import Skills from "../components/Skills.astro";
 import Layout from "../layouts/Layout.astro";
 import { loadQuery } from "../sanity/lib/load-query";
 import { urlFor } from "../sanity/lib/image";
+import WorkExperience from "../components/WorkExperience.astro";
 
 const { params } = Astro;
 
@@ -18,6 +19,8 @@ const { data: homeContent } = await loadQuery<HomeContent>({
 const { data: allProjects } = await loadQuery<Projects[]>({
   query: `*[_type == "project"]`,
 });
+
+console.log(homeContent.experience);
 ---
 
 <Layout>
@@ -38,5 +41,6 @@ const { data: allProjects } = await loadQuery<Projects[]>({
     body={homeContent.skillsSubheading}
     listItems={homeContent.skillsList}
   />
+  <WorkExperience workExperienceList={homeContent.experience} />
   <Portfolio allProjects={allProjects} />
 </Layout>

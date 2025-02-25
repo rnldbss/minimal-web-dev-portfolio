@@ -8,8 +8,8 @@ import { urlFor } from "../../sanity/lib/image";
 import { generateTOC } from "../../js/toc";
 import TwoItemsList from "../../components/TwoItemsList.astro";
 import AllProjectsList from "../../components/AllProjectsList.astro";
+import Chip from "../../components/Chip.astro";
 
-// Define TypeScript interfaces for Project data
 interface TechStackItem {
   name: string;
   icon?: string;
@@ -29,7 +29,7 @@ interface Project extends SanityDocument {
   slug: { current: string };
 }
 
-// GROQ Query for Static Paths
+// GROQ query for static paths
 export async function getStaticPaths() {
   const { data: projects } = await loadQuery<Project[]>({
     query: `*[_type == "project"]`,
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 
 const { params } = Astro;
 
-// Fetch Project Data
+// Fetch project data
 const { data: project } = await loadQuery<Project>({
   query: `*[_type == "project" && slug.current == $slug][0]`,
   params,
@@ -50,7 +50,8 @@ const { data: project } = await loadQuery<Project>({
 
 // Fetch all projects for listing
 const { data: allProjects } = await loadQuery<Project[]>({
-  query: `*[_type == "project"]`,
+  query: `*[_type == "project" && slug.current != $currentSlug]`,
+  params: { currentSlug: project.slug.current },
 });
 
 // Generate TOC from `project.body`
@@ -59,36 +60,26 @@ const toc = generateTOC(project.body);
 
 <Layout>
   <article class="max-w-2xl mx-auto pt-20">
-    <section>
+    <section class="space-y-8">
       <img
         class="max-h-[45vh] w-full object-cover"
         src={urlFor(project.mainImage)}
         alt={project.title}
       />
-      <div>
-        <div>
-          <h1 class="text-xl md:text-2xl">
-            {project.tagLine}
-          </h1>
-          <h2 class="">{project.title}</h2>
-          <ul class="flex gap-2 flex-wrap">
-            {
-              project.projectOverview.techStack.map((item) => (
-                <li class="dark:bg-level-2-dark bg-level-2 me-2 rounded-sm px-2.5 py-0.5 text-sm">{item.itemOne}</li>
-              ))
-            }
-          </ul>
-          <div class="">
-            <MyPortableText content={project.projectOverview?.body} />
-          </div>
+      <div class="space-y-4">
+        <h1 class="text-xl md:text-2xl">
+          {project.tagLine}
+        </h1>
+        <h2 class="text-accent-primary">{project.title}</h2>
+        <MyPortableText content={project.projectOverview?.body} />
+        <div class="space-y-2">
+          <h3>Tech stack</h3>
+          <TwoItemsList listItems={project.projectOverview.techStack} />
         </div>
       </div>
     </section>
-    <!-- <div class="max-w-2xl space-y-4">
-      <h3 class="text-2xl">Tech</h3>
-      <TwoItemsList listItems={project.projectOverview.techStack} />
-    </div> -->
-    <article class="flex flex-col-reverse lg:flex-row pt-10 gap-10 relative">
+
+    <article class="flex flex-col-reverse lg:flex-row gap-10 relative">
       <div class="max-w-[50em]">
         <MyPortableTextWithTOC content={project.body} />
       </div>
@@ -110,8 +101,8 @@ const toc = generateTOC(project.body);
       </aside> -->
     </article>
   </article>
-  <section class="max-w-2xl mx-auto pt-20">
-    <h2 class="text-4xl">All Projects</h2>
+  <section class="max-w-2xl mx-auto pt-10 md:pt-20 space-y-2">
+    <h2>More projects</h2>
     <AllProjectsList listItems={allProjects} />
   </section>
 </Layout>

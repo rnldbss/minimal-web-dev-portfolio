@@ -2,6 +2,7 @@ import type { SchemaTypeDefinition } from "sanity";
 import { blockContentType } from "./utils/blockContent";
 import { categoryType } from "./documents/blog/category";
 import { customImageType } from "./utils/customImage";
+import { experienceType } from "./plugins/experience";
 import { headingWithTextType } from "./plugins/headingWithText";
 import { heroSecondaryType } from "./plugins/heroSecondary";
 import { homeType } from "./documents/home/home";
@@ -26,5 +27,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     twoStringsType,
     imageWithLinkType,
     homeType,
+    experienceType
   ],
 };
