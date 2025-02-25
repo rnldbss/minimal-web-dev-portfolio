@@ -30,16 +30,17 @@ console.log(homeContent.experience);
     body={homeContent.heroSubheading}
     image={homeContent.heroImage}
   />
+
+  <Skills
+    heading={homeContent.skillsHeading}
+    body={homeContent.skillsSubheading}
+    listItems={homeContent.skillsList}
+  />
   <About
     heading={homeContent.aboutHeading}
     body={homeContent.aboutBody}
     image={urlFor(homeContent.aboutImage)}
     imageAlt={homeContent.aboutImage.alt}
-  />
-  <Skills
-    heading={homeContent.skillsHeading}
-    body={homeContent.skillsSubheading}
-    listItems={homeContent.skillsList}
   />
   <WorkExperience workExperienceList={homeContent.experience} />
   <Portfolio allProjects={allProjects} />

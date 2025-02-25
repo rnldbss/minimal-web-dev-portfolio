@@ -7,6 +7,9 @@ const { heading, body, listItems } = Astro.props;
 
 <section class="space-y-2">
   <h2>{heading}</h2>
-  <MyPortableText content={body} />  
-  <TwoItemsList containerStyles="grid grid-cols-2 gap-x-10" listItems={listItems} />
+  <MyPortableText content={body} />
+  <TwoItemsList
+    containerStyles="grid sm:grid-cols-2 gap-x-5"
+    listItems={listItems}
+  />
 </section>

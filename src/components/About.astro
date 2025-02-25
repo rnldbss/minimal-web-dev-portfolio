@@ -6,5 +6,9 @@ const { heading, body, image, imageAlt } = Astro.props;
 
 <section class="space-y-2">
   <h2>{heading}</h2>
-  <div class="columns-2 gap-5 paragraph-spacing"> <MyPortableText content={body} /></div>
+  <div
+    class="sm:columns-2 gap-5 paragraph-spacing sm:[&>p]:break-inside-avoid-auto"
+  >
+    <MyPortableText content={body} />
+  </div>
 </section>
