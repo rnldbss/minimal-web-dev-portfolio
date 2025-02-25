@@ -11,12 +11,12 @@ interface Props {
 const { listItems, containerStyles } = Astro.props as Props;
 ---
 
-<ul class={`list-container ${containerStyles}`}>
+<ul class={`${containerStyles}`}>
   {
     listItems.map((item) => (
-      <li>
+      <li class="border-b border-accent-primary py-1 flex items-center justify-between">
         <span>{item.itemOne}</span>
-        <span class="">{item.itemTwo}</span>
+        <span class="text-sm opacity-60">{item.itemTwo}</span>
       </li>
     ))
   }

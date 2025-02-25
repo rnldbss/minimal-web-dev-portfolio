@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
 import MyPortableText from "../../components/portable-text/MyPortableText.astro";
+import MyPortableTextWithTOC from "../../components/portable-text/MyPortableTextWithTOC.astro";
 import { urlFor } from "../../sanity/lib/image";
 import { generateTOC } from "../../js/toc";
 import TwoItemsList from "../../components/TwoItemsList.astro";
@@ -57,41 +58,41 @@ const toc = generateTOC(project.body);
 ---
 
 <Layout>
-  <section>
-    <div class="pt-14 min-h-screen">
+  <article class="max-w-2xl mx-auto pt-20">
+    <section>
       <img
         class="max-h-[45vh] w-full object-cover"
         src={urlFor(project.mainImage)}
         alt={project.title}
       />
-      <div class="pt-4">
+      <div>
         <div>
           <h1 class="text-xl md:text-2xl">
             {project.tagLine}
           </h1>
-          <h2 class="text-4xl md:text-6xl lg:text-7xl pt-2">{project.title}</h2>
-          <ul class="flex gap-3 pt-5">
+          <h2 class="">{project.title}</h2>
+          <ul class="flex gap-2 flex-wrap">
             {
               project.projectOverview.techStack.map((item) => (
-                <li class="border border-level-1 dark:border-level-1-dark px-2 py-1">{item.itemOne}</li>
+                <li class="dark:bg-level-2-dark bg-level-2 me-2 rounded-sm px-2.5 py-0.5 text-sm">{item.itemOne}</li>
               ))
             }
           </ul>
-          <div class="max-w-2xl pt-5">
+          <div class="">
             <MyPortableText content={project.projectOverview?.body} />
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- <div class="max-w-2xl space-y-4">
       <h3 class="text-2xl">Tech</h3>
       <TwoItemsList listItems={project.projectOverview.techStack} />
     </div> -->
     <article class="flex flex-col-reverse lg:flex-row pt-10 gap-10 relative">
       <div class="max-w-[50em]">
-        <MyPortableText content={project.body} />
+        <MyPortableTextWithTOC content={project.body} />
       </div>
-      <aside
+      <!-- <aside
         class="border-2 border-primary self-start min-w-80 lg:sticky top-16 p-5"
       >
         <nav>
@@ -106,10 +107,10 @@ const toc = generateTOC(project.body);
             }
           </ul>
         </nav>
-      </aside>
+      </aside> -->
     </article>
-  </section>
-  <section>
+  </article>
+  <section class="max-w-2xl mx-auto pt-20">
     <h2 class="text-4xl">All Projects</h2>
     <AllProjectsList listItems={allProjects} />
   </section>

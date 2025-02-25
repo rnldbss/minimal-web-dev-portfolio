@@ -38,5 +38,5 @@ const { data: allProjects } = await loadQuery<Projects[]>({
     body={homeContent.skillsSubheading}
     listItems={homeContent.skillsList}
   />
-  <Portfolio allProjects={allProjects.slice(3)} />
+  <Portfolio allProjects={allProjects} />
 </Layout>

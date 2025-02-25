@@ -7,12 +7,11 @@ import AllProjectsList from "./AllProjectsList.astro";
 const { allProjects } = Astro.props;
 ---
 
-<section class="pt-32 space-y-8">
-  <h2 class="text-2xl sm:text-3xl md:text-6xl">Portfolio</h2>
-  <div class="flex flex-col gap-20">
+<section class="">
+  <h2 class="">Portfolio</h2>
+  <div class="space-y-20">
     {
       allProjects
-        .slice(0, 3)
         .map((item) => (
           <PortfolioCard
             cardHeading={item.title}

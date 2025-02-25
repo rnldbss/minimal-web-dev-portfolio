@@ -5,12 +5,8 @@ import TwoItemsList from "./TwoItemsList.astro";
 const { heading, body, listItems } = Astro.props;
 ---
 
-<section class="pt-10 md:pt-32 space-y-2 md:space-y-8">
-  <h2 class="text-2xl sm:text-3xl md:text-6xl">{heading}</h2>
-  <div class="space-y-4">
-    <div class="max-w-md cou">
-      <MyPortableText content={body} />
-    </div>
-    <TwoItemsList containerStyles="md:columns-2" listItems={listItems} />
-  </div>
+<section class="space-y-2">
+  <h2>{heading}</h2>
+  <MyPortableText content={body} />  
+  <TwoItemsList containerStyles="grid grid-cols-2 gap-x-10" listItems={listItems} />
 </section>
