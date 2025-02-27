@@ -8,7 +8,7 @@ export default {
         // @link https://utopia.fyi/type/calculator?c=320,17,1.2,1240,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
         xs: "clamp(0.72rem, 0.7441rem + -0.031vw, 0.7378rem)",
         sm: "clamp(0.8854rem, 0.8803rem + 0.0254vw, 0.9rem)",
-        base: "clamp(1rem, 1.0842rem + -0.1087vw, 1.0625rem)",
+        base: "clamp(0.9375rem, 1.106rem + -0.2174vw, 1.0625rem)",
         lg: "clamp(1.275rem, 1.2293rem + 0.2283vw, 1.4063rem)",
         xl: "clamp(1.53rem, 1.4508rem + 0.3962vw, 1.7578rem)",
         "2xl": "clamp(1.836rem, 1.7103rem + 0.6283vw, 2.1973rem)",

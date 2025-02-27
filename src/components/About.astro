@@ -1,14 +1,10 @@
 ---
 import MyPortableText from "./portable-text/MyPortableText.astro";
-
-const { heading, body, image, imageAlt } = Astro.props;
+import { urlFor } from "../sanity/lib/image";
+const { heading, body, image } = Astro.props;
 ---
 
 <section class="space-y-2">
   <h2>{heading}</h2>
-  <div
-    class="sm:columns-2 gap-5 paragraph-spacing sm:[&>p]:break-inside-avoid-auto"
-  >
-    <MyPortableText content={body} />
-  </div>
+  <MyPortableText content={body} />
 </section>

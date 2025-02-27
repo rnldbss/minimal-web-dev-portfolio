@@ -10,8 +10,8 @@ interface ListProps {
 const { content } = Astro.props;
 ---
 
-<PortableText value={content}
-  ><fragment slot="list">
+<PortableText value={content}>
+  <fragment slot="list">
     {
       ({ Component, props, children }: ListProps) => {
         const listClass =
