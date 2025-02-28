@@ -13,11 +13,11 @@ interface Props {
 const { listItems } = Astro.props as Props;
 ---
 
-<ul class="">
+<ul>
   {
     listItems.map((item) => (
       <li class="border-b border-accent-primary py-1 flex items-center justify-between">
-        <div class="flex justify-between items-center min-w-36">
+        <div class="flex justify-between items-center min-w-32">
           <span>{item.title} </span>
           <span class="text-xs">{item.launchYear}</span>
         </div>

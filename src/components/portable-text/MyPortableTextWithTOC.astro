@@ -1,5 +1,6 @@
 ---
 import { PortableText } from "astro-portabletext";
+import { urlFor } from "../../sanity/lib/image";
 
 // Custom types for fragment components
 interface BlockProps {
@@ -20,12 +21,18 @@ interface MarkProps {
   children: any;
 }
 
+interface ImageProps {
+  Component: (props: any) => JSX.Element;
+  props: Record<string, any>;
+  children: any;
+}
+
 // Classes for headings
 const headingClasses: Record<string, string> = {
   h1: "mb-4",
-  h2: "mb-4",
-  h3: "mb-4",
-  h4: "mb-4",
+  h2: "mb-2 mt-14 first:mt-0 leading-snug",
+  h3: "mb-2 mt-6 ",
+  h4: "mb-2 mt-4",
 };
 ---
 
@@ -50,7 +57,7 @@ const headingClasses: Record<string, string> = {
         }
 
         return (
-          <Component {...props} class="mb-4">
+          <Component {...props} class="mb-2">
             {children}
           </Component>
         );
@@ -64,8 +71,8 @@ const headingClasses: Record<string, string> = {
       ({ Component, props, children }: ListProps) => {
         const listClass =
           props.type === "bullet"
-            ? "list-decimal list-inside mb-4 ml-2 [&>li]:mb-2"
-            : "list-disc list-inside mb-4 ml-2 [&>li]:mb-2";
+            ? "list-decimal list-inside mb-2 ml-2 [&>li]:mb-2"
+            : "list-disc list-inside mb-2 ml-2 [&>li]:mb-2";
 
         return (
           <Component {...props} class={listClass}>
@@ -82,6 +89,26 @@ const headingClasses: Record<string, string> = {
       ({ Component, props, children }: MarkProps) => (
         <Component {...props}>{children}</Component>
       )
+    }
+  </fragment>
+  <!-- Image -->
+  <fragment slot="type">
+    {
+      ({ Component, props }: ImageProps) => {
+        if (props.node._type === "image" && props.node.asset) {
+          return (
+            <div class="rounded-md overflow-hidden w-max mx-auto mt-8">
+              <img
+                src={urlFor(props.node).url()}
+                alt={props.node.alt || "Image"}
+                class="h-[400px]"
+              />
+            </div>
+          );
+        }
+
+        return <Component {...props} />;
+      }
     }
   </fragment>
 </PortableText>

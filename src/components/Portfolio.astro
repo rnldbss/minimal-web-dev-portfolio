@@ -14,7 +14,7 @@ const { allProjects } = Astro.props;
       allProjects.map((item) => (
         <PortfolioCard
           cardHeading={item.title}
-          cardBody={item.projectOverview.body}
+          cardBody={item.cardDescription}
           cardImage={urlFor(item.mainImage)}
           cardImageAlt={item.mainImage.alt}
           cardList={item.projectOverview.techStack}

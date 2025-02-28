@@ -10,23 +10,23 @@ import { imageWithLinkType } from "./plugins/imageWithLink";
 import { pageType } from "./documents/page builder/page";
 import { postType } from "./documents/blog/post";
 import { projectType } from "./documents/portfolio/project";
-import { textAndDetailsWithImageType } from "./plugins/textAndDetailsWithImage";
+import { textAndListDetailsType } from "./plugins/textAndListDetails";
 import { twoStringsType } from "./plugins/twoStrings";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    projectType, 
-    blockContentType, 
-    categoryType, 
+    projectType,
+    blockContentType,
+    categoryType,
     postType,
     customImageType,
     heroSecondaryType,
     pageType,
-    textAndDetailsWithImageType,
+    textAndListDetailsType,
     headingWithTextType,
     twoStringsType,
     imageWithLinkType,
     homeType,
-    experienceType
+    experienceType,
   ],
 };

@@ -8,7 +8,6 @@ const {
   cardBody,
   cardImage,
   cardImageAlt,
-  cardList,
   projectSlug,
 } = Astro.props;
 ---
@@ -17,8 +16,6 @@ const {
   <div class="w-full my-auto space-y-2">
     <h3>{cardHeading}</h3>
     <MyPortableText content={cardBody} />
-    <!-- <TwoItemsList listItems={cardList} /> -->
-
     <ButtonPrimary buttonText="view" buttonHref={`/portfolio/${projectSlug}`} />
   </div>
   <div class="w-full">
