@@ -8,13 +8,13 @@ export type props = {
   title: string;
 };
 
-const siteUrl = "https://bessa.dev";
+const { seo } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <Seo siteUrl={siteUrl} />
+    <Seo seo={seo} />
     <ThemeSwitcherScript />
   </head>
   <body class="color-level-0 dark:bg-level-0-dark px-3 md:px-10 relative">

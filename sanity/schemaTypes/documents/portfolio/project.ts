@@ -24,6 +24,10 @@ export const projectType = defineType({
       title: "Card",
       name: "card",
       icon: UlistIcon,
+    },{
+      title: "seo",
+      name: "seo",
+      icon: UlistIcon,
     },
   ],
   fields: [
@@ -77,6 +81,11 @@ export const projectType = defineType({
       name: "linkLabel",
       type: "string",
       group: "hero",
+    }),
+      defineField({
+      name: "seo",
+      type: "metadata",
+      group: "seo",
     }),
   ],
 

@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const metadataType = defineType({
   title: "Metadata",
@@ -32,6 +32,11 @@ export const metadataType = defineType({
           .warning(
             `A description shouldn't be more than 150 characters or less then 120.`
           ),
+    }),
+     defineField({
+      title: "Slug:",
+      name: "slug",
+      type: "string",
     }),
     defineField({
       title: "Keywords:",

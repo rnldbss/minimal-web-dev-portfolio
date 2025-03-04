@@ -19,9 +19,11 @@ const { data: homeContent } = await loadQuery<HomeContent>({
 const { data: allProjects } = await loadQuery<Projects[]>({
   query: `*[_type == "project"]`,
 });
+
+console.log(homeContent.seo.slug);
 ---
 
-<Layout>
+<Layout seo={homeContent.seo}>
   <Hero
     tagLine={homeContent.heroHeading}
     heading={homeContent.aboutHeading}
