@@ -2,10 +2,10 @@
 import MyPortableText from "./portable-text/MyPortableText.astro";
 import TwoItemsList from "./TwoItemsList.astro";
 
-const { heading, body, listItems } = Astro.props;
+const { heading, body, listItems, ...props } = Astro.props;
 ---
 
-<section class="space-y-2">
+<section class="space-y-2" {...props}>
   <h2>{heading}</h2>
   <MyPortableText content={body} />
   <TwoItemsList

@@ -16,8 +16,8 @@ const { content } = Astro.props;
       ({ Component, props, children }: ListProps) => {
         const listClass =
           props.type === "bullet"
-            ? "list-decimal list-inside mb-4 ml-2 [&>li]:mb-2"
-            : "list-disc list-inside mb-4 ml-2 [&>li]:mb-2";
+            ? "list-decimal mb-4 [&>li]:mb-2"
+            : "list-disc mb-4 [&>li]:mb-2";
 
         return (
           <Component {...props} class={listClass}>

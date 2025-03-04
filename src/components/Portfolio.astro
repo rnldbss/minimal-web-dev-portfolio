@@ -1,15 +1,14 @@
 ---
 import PortfolioCard from "./PortfolioCard.astro";
-import PortfolioList from "./PortfolioList.astro";
 import { urlFor } from "../sanity/lib/image";
 import AllProjectsList from "./AllProjectsList.astro";
 
-const { allProjects } = Astro.props;
+const { allProjects, ...props } = Astro.props;
 ---
 
-<section class="space-y-4">
+<section class="space-y-4" {...props}>
   <h2 class="">Portfolio</h2>
-  <div class="space-y-20">
+  <div class="space-y-14 md:space-y-20">
     {
       allProjects.map((item) => (
         <PortfolioCard

@@ -81,8 +81,16 @@
     @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark;
   }
 
+   small {
+    @apply font-pp-neue-montreal text-xs text-on-level-0 dark:text-on-level-0-dark;
+  }
+
   section {
-    @apply pb-20;
+    @apply pb-14 md:pb-20;
+  }
+
+  ul {
+    @apply list-outside ms-5;
   }
 }
 
