@@ -1,34 +1,26 @@
 ---
-import { VisualEditing } from "@sanity/astro/visual-editing";
-
 import "../styles/main.css";
 import ThemeSwitcherScript from "../components/scripts/theme-swicther-script.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Seo from "../components/Seo.astro";
 export type props = {
   title: string;
 };
 
-const { title } = Astro.props;
-const visualEditingEnabled =
-  import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == "true";
+const siteUrl = "https://bessa.dev";
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <Seo siteUrl={siteUrl} />
     <ThemeSwitcherScript />
   </head>
   <body class="color-level-0 dark:bg-level-0-dark px-3 md:px-10 relative">
     <Header />
     <main class="max-w-2xl mx-auto"><slot /></main>
 
-    <VisualEditing enabled={visualEditingEnabled} />
     <Footer />
   </body>
 </html>

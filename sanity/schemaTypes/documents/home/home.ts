@@ -25,6 +25,11 @@ export const homeType = defineType({
       name: "experience",
       icon: UlistIcon,
     },
+       {
+      title: "SEO",
+      name: "seo",
+      icon: UlistIcon,
+    },
   ],
   fields: [
     defineField({
@@ -84,6 +89,11 @@ export const homeType = defineType({
       type: "array",
       of: [defineArrayMember({ type: "experience" })],
       group: "experience",
+    }),
+     defineField({
+      name: "seo",
+      type: "metadata",
+      group: "seo",
     }),
     
   ],

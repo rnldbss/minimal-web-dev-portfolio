@@ -1,4 +1,16 @@
-<footer class="max-w-2xl mx-auto space-y-4">
+---
+import { loadQuery } from "../sanity/lib/load-query";
+
+const { data: footerContent } = await loadQuery<FooterContent>({
+  query: `*[_type == "links"][0]{
+    "resumeUrl": resume.asset->url
+  }`,
+});
+
+console.log(footerContent);
+---
+
+<footer id="contact" class="max-w-2xl mx-auto space-y-4">
   <h2>Connect</h2>
   <ul class="ms-0 space-y-1">
     <li class="flex">
@@ -15,7 +27,12 @@
       >
     </li>
     <li class="flex">
-      <span class="min-w-24">CV</span><a rel="norefferer">download</a>
+      <span class="min-w-24">CV</span><a
+        rel="norefferer"
+        download
+        target="_blank"
+        href={footerContent.resumeUrl}>download</a
+      >
     </li>
   </ul>
   <small class="block">Copywrite Ronald Bessa</small>

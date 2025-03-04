@@ -28,7 +28,9 @@ const { data: allProjects } = await loadQuery<Projects[]>({
     body={homeContent.heroSubheading}
     image={homeContent.heroImage}
   />
-  <HorizontalLine />
+  <HorizontalLine
+    className={"!h-0.5 sm:!h-px !bg-accent-primary sm:!bg-accent-primary/20"}
+  />
   <Skills
     heading={homeContent.skillsHeading}
     body={homeContent.skillsSubheading}
