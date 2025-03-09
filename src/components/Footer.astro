@@ -1,5 +1,6 @@
 ---
 import { loadQuery } from "../sanity/lib/load-query";
+import ForkCounter from "./ForkCounter.astro";
 
 const { data: footerContent } = await loadQuery<FooterContent>({
   query: `*[_type == "links"][0]{
@@ -7,64 +8,56 @@ const { data: footerContent } = await loadQuery<FooterContent>({
   }`,
 });
 
-const linksList = {
-  email: {
+const linksList = [
+  {
     itemOne: "Email",
     itemTwo: "ronald@bessa.studio",
     href: "mailto:ronald@bessa.studio",
   },
-  github: {
-    itemOne: "Email",
-    itemTwo: "ronald@bessa.studio",
-    href: "mailto:ronald@bessa.studio",
+  {
+    itemOne: "LinkedIn",
+    itemTwo: "/in/ronaldbessa",
+    href: "https://linkedin.com/in/ronaldbessa",
   },
-  linkedin: {
-    itemOne: "Email",
-    itemTwo: "ronald@bessa.studio",
-    href: "mailto:ronald@bessa.studio",
+  {
+    itemOne: "GitHub",
+    itemTwo: "/rnldbss",
+    href: "https://github.com/rnldbss",
   },
-  cv: {
+  {
     itemOne: "CV",
-    itemTwo: "ronald@bessa.studio",
-    href: "mailto:ronald@bessa.studio",
+    itemTwo: "download",
+    href: footerContent.resumeUrl,
   },
-};
+];
 ---
 
-<footer id="contact" class="max-w-xl mx-auto space-y-4">
-  <h2>Connect</h2>
-  <ul class="ms-0 space-y-1">
-    <!-- {
-      linksList.map((listItem) => (
-        <li class="flex">
-          <>
-            <span class="min-w-24">Email</span>
-            <a rel="norefferer">ronald@bessa.studio</a>
-          </>
-        </li>
-      ))
-    } -->
-    <li class="flex">
-      <span class="min-w-24">Email</span><a rel="norefferer"
-        >ronald@bessa.studio</a
-      >
-    </li>
-    <li class="flex">
-      <span class="min-w-24">GitHub</span><a rel="norefferer">/rnldbss</a>
-    </li>
-    <li class="flex">
-      <span class="min-w-24">LinkedIn</span><a rel="norefferer"
-        >/in/ronaldbessa</a
-      >
-    </li>
-    <li class="flex">
-      <span class="min-w-24">CV</span><a
-        rel="norefferer"
-        download
-        target="_blank"
-        href={footerContent.resumeUrl}>download</a
-      >
-    </li>
-  </ul>
-  <small class="block">Copyright Ronald Bessa</small>
+<footer id="contact" class="max-w-xl mx-auto pb-2 space-y-16">
+  <div class="space-y-4">
+    <h2>Get in touch</h2>
+    <ul class="ms-0 space-y-1.5 max-w-64">
+      {
+        linksList.map((listItem) => (
+          <li class="flex items-center gap-1">
+            <span class="">{listItem.itemOne}</span>
+            <span class="w-full h-px bg-accent-primary" />
+            <a
+              rel="norefferer"
+              href={listItem.href}
+              class="sm:hover:text-accent-primary"
+            >
+              {listItem.itemTwo}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="flex flex-col items-center justify-between gap-0.5">
+    <small class="block">Designed & Built by Ronald Bessa</small>
+    <small class="block">Feel free to fork and use this as your portfolio</small
+    >
+    <ForkCounter />
+  </div>
 </footer>

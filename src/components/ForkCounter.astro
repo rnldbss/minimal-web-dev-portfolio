@@ -1,0 +1,45 @@
+---
+
+---
+
+<a
+  href="https://github.com/rnldbss/ronald-bessa-portfolio"
+  class="flex items-center gap-1 group"
+>
+  <svg
+    width="10"
+    height="12"
+    viewBox="0 0 20 22"
+    fill="none"
+    class="fill-on-level-0 dark:fill-on-level-0-dark group-hover:fill-accent-primary"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.75 18.25C6.75 20.0449 8.20507 21.5 10 21.5C11.7949 21.5 13.25 20.0449 13.25 18.25C13.25 16.7132 12.1834 15.4255 10.75 15.087V11.5H13.25C15.3211 11.5 17 9.82107 17 7.75V6.91303C18.4333 6.57445 19.5 5.28679 19.5 3.75C19.5 1.95507 18.0449 0.5 16.25 0.5C14.4551 0.5 13 1.95507 13 3.75C13 5.28679 14.0666 6.57445 15.5 6.91303V7.75C15.5 8.99264 14.4926 10 13.25 10H6.75C5.50736 10 4.5 8.99264 4.5 7.75V6.91303C5.93335 6.57445 7 5.28679 7 3.75C7 1.95507 5.54493 0.5 3.75 0.5C1.95507 0.5 0.5 1.95507 0.5 3.75C0.5 5.28679 1.56665 6.57445 3 6.91303V7.75C3 9.82107 4.67893 11.5 6.75 11.5H9.25V15.087C7.81665 15.4255 6.75 16.7132 6.75 18.25ZM10 20C9.0335 20 8.25 19.2165 8.25 18.25C8.25 17.2835 9.0335 16.5 10 16.5C10.9665 16.5 11.75 17.2835 11.75 18.25C11.75 19.2165 10.9665 20 10 20ZM3.75 5.5C2.7835 5.5 2 4.7165 2 3.75C2 2.7835 2.7835 2 3.75 2C4.7165 2 5.5 2.7835 5.5 3.75C5.5 4.7165 4.7165 5.5 3.75 5.5ZM14.5 3.75C14.5 4.7165 15.2835 5.5 16.25 5.5C17.2165 5.5 18 4.7165 18 3.75C18 2.7835 17.2165 2 16.25 2C15.2835 2 14.5 2.7835 14.5 3.75Z"
+    ></path>
+  </svg>
+
+  <small class="group-hover:text-accent-primary" id="forks-count"></small>
+</a>
+<script>
+  async function getForksCount() {
+    const username = "rnldbss";
+    const repository = "ronald-bessa-portfolio";
+    const url = `https://api.github.com/repos/${username}/${repository}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("GitHub API request failed");
+
+      const data = await response.json();
+      document.getElementById("forks-count").textContent = data.forks_count;
+    } catch (error) {
+      console.log("Error fetching forks count:", error);
+      document.getElementById("forks-count").textContent = "Error";
+    }
+  }
+
+  getForksCount();
+</script>
