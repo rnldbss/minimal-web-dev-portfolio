@@ -3,20 +3,18 @@ import ButtonPrimary from "./ButtonPrimary.astro";
 import MyPortableText from "./portable-text/MyPortableText.astro";
 import TwoItemsList from "./TwoItemsList.astro";
 
-const {
-  cardHeading,
-  cardBody,
-  cardImage,
-  cardImageAlt,
-  projectSlug,
-} = Astro.props;
+const { cardHeading, cardBody, cardImage, cardImageAlt, projectSlug } =
+  Astro.props;
 ---
 
 <div class="flex flex-col-reverse gap-5">
   <div class="w-full my-auto space-y-2">
     <h3>{cardHeading}</h3>
     <MyPortableText content={cardBody} />
-    <ButtonPrimary buttonText="view" buttonHref={`/portfolio/${projectSlug}`} />
+    <ButtonPrimary
+      buttonText="read more"
+      buttonHref={`/portfolio/${projectSlug}`}
+    />
   </div>
   <div class="w-full">
     <img

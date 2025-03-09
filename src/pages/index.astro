@@ -30,24 +30,21 @@ console.log(homeContent.seo.slug);
     body={homeContent.heroSubheading}
     image={homeContent.heroImage}
   />
-  <HorizontalLine
-    className={"!h-0.5 sm:!h-px !bg-accent-primary sm:!bg-accent-primary/20"}
-  />
+
   <Skills
     heading={homeContent.skillsHeading}
     body={homeContent.skillsSubheading}
     listItems={homeContent.skillsList}
   />
-  <HorizontalLine />
+
   <About
     id={"about"}
     heading={homeContent.aboutHeading}
     body={homeContent.aboutBody}
     image={homeContent.aboutImage}
   />
-  <HorizontalLine />
+
   <WorkExperience workExperienceList={homeContent.experience} />
-  <HorizontalLine />
+
   <Portfolio id={"portfolio"} allProjects={allProjects} />
-  <HorizontalLine />
 </Layout>

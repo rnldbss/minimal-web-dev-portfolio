@@ -59,7 +59,7 @@
   h4,
   h5,
   h6 {
-    @apply font-cal leading-none text-on-level-0 dark:text-on-level-0-dark;
+    @apply font-cal leading-tight text-on-level-0 dark:text-on-level-0-dark;
   }
 
   h1 {
@@ -78,10 +78,10 @@
   a,
   span,
   li {
-    @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark;
+    @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark/85;
   }
 
-   small {
+  small {
     @apply font-pp-neue-montreal text-xs text-on-level-0 dark:text-on-level-0-dark;
   }
 
@@ -110,7 +110,6 @@
   .paragraph-spacing {
     @apply [&>p]:mb-2;
   }
-
 }
 
 @layer components {

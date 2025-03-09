@@ -70,7 +70,9 @@ const toc = generateTOC(project.body);
         {project.tagLine}
       </h1>
       <div class="space-y-4">
-        <h2 class="text-accent-primary">{project.title}</h2>
+        <h2 class="text-accent-primary dark:text-accent-primary">
+          {project.title}
+        </h2>
         <MyPortableText content={project.projectOverview?.body} />
       </div>
     </section>

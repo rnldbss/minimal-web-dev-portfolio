@@ -6,11 +6,44 @@ const { data: footerContent } = await loadQuery<FooterContent>({
     "resumeUrl": resume.asset->url
   }`,
 });
+
+const linksList = {
+  email: {
+    itemOne: "Email",
+    itemTwo: "ronald@bessa.studio",
+    href: "mailto:ronald@bessa.studio",
+  },
+  github: {
+    itemOne: "Email",
+    itemTwo: "ronald@bessa.studio",
+    href: "mailto:ronald@bessa.studio",
+  },
+  linkedin: {
+    itemOne: "Email",
+    itemTwo: "ronald@bessa.studio",
+    href: "mailto:ronald@bessa.studio",
+  },
+  cv: {
+    itemOne: "CV",
+    itemTwo: "ronald@bessa.studio",
+    href: "mailto:ronald@bessa.studio",
+  },
+};
 ---
 
-<footer id="contact" class="max-w-2xl mx-auto space-y-4">
+<footer id="contact" class="max-w-xl mx-auto space-y-4">
   <h2>Connect</h2>
   <ul class="ms-0 space-y-1">
+    <!-- {
+      linksList.map((listItem) => (
+        <li class="flex">
+          <>
+            <span class="min-w-24">Email</span>
+            <a rel="norefferer">ronald@bessa.studio</a>
+          </>
+        </li>
+      ))
+    } -->
     <li class="flex">
       <span class="min-w-24">Email</span><a rel="norefferer"
         >ronald@bessa.studio</a
@@ -33,5 +66,5 @@ const { data: footerContent } = await loadQuery<FooterContent>({
       >
     </li>
   </ul>
-  <small class="block">Copywrite Ronald Bessa</small>
+  <small class="block">Copyright Ronald Bessa</small>
 </footer>
