@@ -1,0 +1,67 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { loadQuery } from "../../sanity/lib/load-query";
+
+const { params } = Astro;
+
+const { data: contactData } = await loadQuery<ContactData>({
+  query: `*[_type == "contact"][0]{
+    seo,
+    links[]{
+      itemOne,
+      itemTwo,
+      urlType,
+      url,
+      file {
+        asset->{
+          url
+        }
+      }
+    }
+  }`,
+  params,
+});
+
+console.log(contactData);
+---
+
+<Layout seo={contactData.seo}>
+  <section class="pt-20 space-y-8">
+    <div class="space-y-4">
+      <h1>Get in touch</h1>
+      <p>
+        I'm currently looking for a full-time opportunity where I can
+        contribute, grow, and build great web experiences. If you're hiring or
+        just want to chat about front-end development, feel free to reach out :)
+      </p>
+    </div>
+
+    <ul class="ms-0 space-y-1.5">
+      {
+        contactData.links.map((listItem) => {
+          const href =
+            listItem.urlType === "file"
+              ? listItem.file?.asset?.url
+              : listItem.url;
+          return (
+            <li>
+              <a
+                class="flex items-center gap-3 group cursor-pointer"
+                rel="norefferer"
+                href={href}
+                target={href?.startsWith("mailto:") ? undefined : "_blank"}
+                download={listItem.urlType === "file" ? true : undefined}
+              >
+                <span class="font-cal">{listItem.itemOne}</span>
+                <span class="w-full h-[1.5px] bg-accent-primary" />
+                <span class="sm:group-hover:text-accent-primary">
+                  {listItem.itemTwo}
+                </span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Layout>

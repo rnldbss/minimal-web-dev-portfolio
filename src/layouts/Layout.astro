@@ -17,9 +17,11 @@ const { seo } = Astro.props;
     <Seo seo={seo} />
     <ThemeSwitcherScript />
   </head>
-  <body class="color-level-0 dark:bg-level-0-dark px-3 md:px-10 relative">
+  <body
+    class="bg-level-0 dark:bg-level-0-dark px-3 md:px-10 relative min-h-screen flex flex-col"
+  >
     <Header />
-    <main class="max-w-xl mx-auto"><slot /></main>
+    <main class="max-w-xl mx-auto w-full"><slot /></main>
 
     <Footer />
   </body>

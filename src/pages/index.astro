@@ -10,7 +10,7 @@ import HorizontalLine from "../components/HorizontalLine.astro";
 import CallToAction from "../components/CallToAction.astro";
 const { params } = Astro;
 
-const { data: homeContent } = await loadQuery<HomeContent>({
+const { data: homeData } = await loadQuery<HomeData>({
   query: `*[_type == "home"][0]`,
   params,
 });
@@ -19,32 +19,30 @@ const { data: homeContent } = await loadQuery<HomeContent>({
 const { data: allProjects } = await loadQuery<Projects[]>({
   query: `*[_type == "project"]`,
 });
-
-console.log(homeContent.seo.slug);
 ---
 
-<Layout seo={homeContent.seo}>
+<Layout seo={homeData.seo}>
   <Hero
-    tagLine={homeContent.heroHeading}
-    heading={homeContent.aboutHeading}
-    body={homeContent.heroSubheading}
-    image={homeContent.heroImage}
+    tagLine={homeData.heroHeading}
+    heading={homeData.aboutHeading}
+    body={homeData.heroSubheading}
+    image={homeData.heroImage}
   />
 
   <Skills
-    heading={homeContent.skillsHeading}
-    body={homeContent.skillsSubheading}
-    listItems={homeContent.skillsList}
+    heading={homeData.skillsHeading}
+    body={homeData.skillsSubheading}
+    listItems={homeData.skillsList}
   />
 
   <About
     id={"about"}
-    heading={homeContent.aboutHeading}
-    body={homeContent.aboutBody}
-    image={homeContent.aboutImage}
+    heading={homeData.aboutHeading}
+    body={homeData.aboutBody}
+    image={homeData.aboutImage}
   />
 
-  <WorkExperience workExperienceList={homeContent.experience} />
+  <WorkExperience workExperienceList={homeData.experience} />
 
   <Portfolio id={"portfolio"} allProjects={allProjects} />
   <CallToAction />
