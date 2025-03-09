@@ -3,7 +3,7 @@ import MyPortableText from "./portable-text/MyPortableText.astro";
 const { heading, body, ...props } = Astro.props;
 ---
 
-<section class="space-y-2" {...props}>
+<section class="space-y-4 [&>p]:pb-4" {...props}>
   <h2>{heading}</h2>
   <MyPortableText content={body} />
 </section>
