@@ -10,6 +10,7 @@ import { imageWithLinkType } from "./plugins/imageWithLink";
 import { linksType } from "./documents/components/links";
 import { metadataType } from "./plugins/siteMetadata";
 import { projectType } from "./documents/portfolio/project";
+import { projectsPageType } from "./documents/portfolio/projectsPage";
 import { textAndListDetailsType } from "./plugins/textAndListDetails";
 import { twoStringsType } from "./plugins/twoStrings";
 import { twoStringsWithUrlType } from "./plugins/twoStringsWithHref";
@@ -29,6 +30,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     experienceType,
     linksType,
     metadataType,
-    contactType
+    contactType,
+    projectsPageType
   ],
 };

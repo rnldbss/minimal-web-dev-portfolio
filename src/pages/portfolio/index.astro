@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { loadQuery } from "../../sanity/lib/load-query";
+import ProjectsGrid from "../../components/ProjectsGrid";
+import MyPortableText from "../../components/portable-text/MyPortableText";
+const { params } = Astro;
+
+const { data: projectsPageData } = await loadQuery<ProjectsPageData>({
+  query: `*[_type == "projectsPage"][0]`,
+  params,
+});
+
+// Fetch all projects for listing
+const { data: allProjects } = await loadQuery<Projects[]>({
+  query: `*[_type == "project"] | order(orderRank)`,
+});
+---
+
+<Layout seo={projectsPageData.seo}>
+  <section class="pt-20 space-y-8">
+    <div class="space-y-4">
+      <h1>{projectsPageData.heading}</h1>
+    </div>
+
+    <ProjectsGrid client:load projectsList={allProjects} />
+  </section>
+</Layout>

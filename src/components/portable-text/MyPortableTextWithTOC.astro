@@ -43,6 +43,7 @@ const headingClasses: Record<string, string> = {
       ({ Component, props, children }: BlockProps) => {
         const { node } = props;
 
+        //Check if is heading and add id from string
         if (["h1", "h2", "h3", "h4"].includes(node.style)) {
           const text =
             node.children?.map((child: any) => child.text).join("") || "";
