@@ -1,9 +1,14 @@
 import { DesktopIcon, UlistIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import {
+  orderRankField,
+  orderRankOrdering,
+} from "@sanity/orderable-document-list";
 
 export const projectType = defineType({
   name: "project",
   type: "document",
+  orderings: [orderRankOrdering],
   groups: [
     {
       title: "Hero",
@@ -24,13 +29,16 @@ export const projectType = defineType({
       title: "Card",
       name: "card",
       icon: UlistIcon,
-    },{
+    },
+    {
       title: "seo",
       name: "seo",
       icon: UlistIcon,
     },
   ],
   fields: [
+    orderRankField({ type: "caseStudy" }),
+
     defineField({
       name: "mainImage",
       type: "customImage",
@@ -82,7 +90,7 @@ export const projectType = defineType({
       type: "string",
       group: "hero",
     }),
-      defineField({
+    defineField({
       name: "seo",
       type: "metadata",
       group: "seo",

@@ -17,7 +17,7 @@ const { data: homeData } = await loadQuery<HomeData>({
 
 // Fetch all projects for listing
 const { data: allProjects } = await loadQuery<Projects[]>({
-  query: `*[_type == "project"]`,
+  query: `*[_type == "project"] | order(orderRank)`,
 });
 ---
 
