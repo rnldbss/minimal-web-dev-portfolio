@@ -3,17 +3,20 @@ import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 export const structure = (S, context) =>
   S.list()
     .title("Content")
-
     .items([
+      // Single document for Home page
       S.listItem()
         .title("Home")
         .child(S.document().schemaType("home").documentId("home")),
+
+      // Projects section with nested structure
       S.listItem()
         .title("Projects")
         .child(
           S.list()
             .title("Projects")
             .items([
+              // Single document for projects page configuration
               S.listItem()
                 .title("Projects Page")
                 .child(
@@ -22,6 +25,7 @@ export const structure = (S, context) =>
                     .documentId("projectsPage")
                 ),
 
+              // Orderable list of individual projects
               orderableDocumentListDeskItem({
                 title: "Projects List",
                 type: "project",
@@ -30,12 +34,15 @@ export const structure = (S, context) =>
               }),
             ])
         ),
+
+      // Single document for Contact page
       S.listItem()
         .title("Contact")
         .child(S.document().schemaType("contact").documentId("contact")),
 
       S.divider(),
 
+      // Filter out already handled document types from the default list
       ...S.documentTypeListItems().filter(
         (listItem) =>
           !["home", "project", "contact", "links", "projectsPage"].includes(

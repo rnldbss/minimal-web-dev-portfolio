@@ -1,35 +1,41 @@
-# Sanity Schema Types
+# Sanity Studio
 
-This directory contains all the schema definitions for the project. The schemas are organized into three categories:
+This directory contains the configuration and schema definitions for the project's CMS.
 
 ## Directory Structure
 
-### documents/
+```
+sanity/
+│   deskStructure.js    # Studio navigation structure
+│   index.ts            # Schema entry point
+│   README.md
+│
+└───schemaTypes/        # All content schemas
+    ├───documents/      # Main content types
+    │   ├───components/
+    │   ├───contact/
+    │   ├───home/
+    │   └───portfolio/
+    │
+    ├───plugins/        # Reusable field configurations
+    └───utils/          # Base schemas and configurations
+```
 
-Contains the main content types that represent full documents in Sanity Studio. These are the primary data structures that define how content is organized and stored.
+## Key Files
 
-### plugins/
-
-Custom field types and reusable schema configurations that can be embedded within other schemas.
-
-### utils/
-
-Utility schemas that provide base configurations and shared functionality used across multiple schemas. These are the foundational building blocks used throughout the project.
-
-## Usage
-
-All schemas are imported and exported through the `index.ts` file, the entry point for Sanity Studio configuration.
+- `deskStructure.js` - Configures the Sanity Studio navigation and content organization
+- `index.ts` - Entry point that imports and exports all schema types
 
 ## Studio Structure
 
-The content in Sanity Studio is organized using a custom desk structure (`deskStructure.js`) that provides a logical navigation hierarchy:
+The content in Sanity Studio is organized using a custom desk structure (`deskStructure.js`):
 
 ### Navigation
 
 1. **Home** - Single document type for the home page
-2. **Projects** - Nested structure with:
-   - Projects age - Schema for the portfolio listing
-   - Projects list - Orderable list of individual projects
+2. **Projects** - Nested structure containing:
+   - Projects Page - Configuration for the portfolio listing
+   - Projects List - Orderable list of individual projects
 3. **Contact** - Single document type for contact information
 
 ### Features
@@ -38,4 +44,4 @@ The content in Sanity Studio is organized using a custom desk structure (`deskSt
 
 ## Usage
 
-All schemas are imported and exported through the `index.ts` file, which serves as the entry point for Sanity Studio configuration. The desk structure (`deskStructure.js`) determines how these schemas are organized and displayed in the Sanity Studio interface.
+All schemas are imported and exported through the `index.ts` file, which is the entry point for Sanity Studio configuration. The desk structure (`deskStructure.js`) determines how these schemas are organized and displayed in the Sanity Studio UI.
