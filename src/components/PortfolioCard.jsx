@@ -7,7 +7,7 @@ export default function PortfolioCard({
   cardImage,
   cardImageAlt,
   projectSlug,
-  className,
+  className = "",
 }) {
   return (
     <div className={`flex flex-col-reverse gap-2 ${className}`}>

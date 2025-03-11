@@ -2,33 +2,8 @@
 import { PortableText } from "astro-portabletext";
 import { urlFor } from "../../sanity/lib/image";
 
-// Custom types for fragment components
-interface BlockProps {
-  Component: (props: any) => JSX.Element;
-  props: { node: any };
-  children: any;
-}
-
-interface ListProps {
-  Component: (props: any) => JSX.Element;
-  props: { type: string };
-  children: any;
-}
-
-interface MarkProps {
-  Component: (props: any) => JSX.Element;
-  props: Record<string, any>;
-  children: any;
-}
-
-interface ImageProps {
-  Component: (props: any) => JSX.Element;
-  props: Record<string, any>;
-  children: any;
-}
-
 // Classes for headings
-const headingClasses: Record<string, string> = {
+const headingClasses = {
   h1: "mb-4",
   h2: "mb-2 mt-14 first:mt-0 leading-snug",
   h3: "mb-2 mt-6 ",
@@ -40,15 +15,14 @@ const headingClasses: Record<string, string> = {
   <!-- Block elements -->
   <fragment slot="block">
     {
-      ({ Component, props, children }: BlockProps) => {
+      ({ Component, props, children }) => {
         const { node } = props;
 
         //Check if is heading and add id from string
         if (["h1", "h2", "h3", "h4"].includes(node.style)) {
-          const text =
-            node.children?.map((child: any) => child.text).join("") || "";
+          const text = node.children?.map((child) => child.text).join("") || "";
           const id = text.toLowerCase().replace(/\s+/g, "-");
-          const Tag = node.style as keyof JSX.IntrinsicElements;
+          const Tag = node.style;
 
           return (
             <Tag id={id} class={headingClasses[node.style]}>
@@ -69,7 +43,7 @@ const headingClasses: Record<string, string> = {
   <!-- Lists -->
   <fragment slot="list">
     {
-      ({ Component, props, children }: ListProps) => {
+      ({ Component, props, children }) => {
         const listClass =
           props.type === "bullet"
             ? "list-decimal mb-4 [&>li]:mb-2"
@@ -87,7 +61,7 @@ const headingClasses: Record<string, string> = {
   <!-- Inline marks -->
   <fragment slot="mark">
     {
-      ({ Component, props, children }: MarkProps) => (
+      ({ Component, props, children }) => (
         <Component {...props}>{children}</Component>
       )
     }
@@ -95,7 +69,7 @@ const headingClasses: Record<string, string> = {
   <!-- Image -->
   <fragment slot="type">
     {
-      ({ Component, props }: ImageProps) => {
+      ({ Component, props }) => {
         if (props.node._type === "image" && props.node.asset) {
           return (
             <div class="rounded-md overflow-hidden w-max mx-auto mt-8">

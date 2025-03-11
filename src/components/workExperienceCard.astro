@@ -1,14 +1,14 @@
 ---
 import MyPortableText from "./portable-text/MyPortableText";
 import { urlFor } from "../sanity/lib/image";
-const { image, company, date, position, description } = Astro.props;
+const { image, company, date, description } = Astro.props;
 ---
 
 <div class="grid grid-cols-8 gap-y-2 sm:grid-cols-12 sm:gap-x-4">
   <div class="col-start-1">
     <img
       class="rounded w-12 sm:w-26 aspect-square"
-      src={urlFor(image)}
+      src={urlFor(image).url()}
       alt={image.alt}
     />
   </div>

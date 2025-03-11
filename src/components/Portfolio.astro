@@ -16,7 +16,6 @@ const { allProjects, ...props } = Astro.props;
           cardBody={item.cardDescription}
           cardImage={urlFor(item.mainImage)}
           cardImageAlt={item.mainImage.alt}
-          cardList={item.projectOverview.techStack}
           projectSlug={item.slug.current}
         />
       ))

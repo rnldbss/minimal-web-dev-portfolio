@@ -1,48 +1,51 @@
-# Astro Starter Kit: Basics
+# Developer Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+A minimalist developer portfolio built with Astro, React, and Sanity CMS. Inspired by designs featured on [Dead Simple Sites](https://deadsimplesites.com/).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Tech Stack
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Frontend**: [Astro](https://astro.build/) with a few React components
+- **Styling**: [TailwindCSS](https://tailwindcss.com/)
+- **CMS**: [Sanity](https://www.sanity.io/)
+- **Hosting**: [Netlify](https://netlify.com/)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Getting Started
 
-## 🚀 Project Structure
+1. Clone the repository
+2. Install dependencies:
 
-Inside of your Astro project, you'll see the following folders and files:
+   ```bash
+   npm install
+   ```
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+3. Set up environment variables:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+   - Copy `.env.example` to `.env`
+   - Fill in your Sanity project details and other required variables
 
-## 🧞 Commands
+4. Start the development server:
 
-All commands are run from the root of the project, from a terminal:
+   ```bash
+   # Run Astro and Sanity Studio
+   astro dev
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Documentation
 
-## 👀 Want to learn more?
+- [Frontend Structure](./src/README.md)
+- [Sanity Configuration](./sanity/README.md)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Deployment
+
+This project is configured for deployment on Netlify. The Sanity Studio is integrated into the Astro project and deployed together. Sanity Studio is at `/studio` route.
+
+## License
+
+Feel free to use this template for your own portfolio. Please give credit where due.
+
+## Acknowledgments
+
+- Design inspiration from [Dead Simple Sites](https://deadsimplesites.com/)
+- Built with [Astro](https://astro.build/)
+- Content management by [Sanity](https://www.sanity.io/)
+- Hosted on [Netlify](https://netlify.com/)

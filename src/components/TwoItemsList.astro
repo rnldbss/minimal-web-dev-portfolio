@@ -1,14 +1,5 @@
 ---
-interface TechStackItem {
-  itemOne: string;
-  itemTwo: string;
-}
-
-interface Props {
-  listItems: TechStackItem[];
-  containerStyles: string;
-}
-const { listItems, containerStyles } = Astro.props as Props;
+const { listItems, containerStyles } = Astro.props
 ---
 
 <ul class={`ms-0 ${containerStyles}`}>

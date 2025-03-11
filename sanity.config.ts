@@ -1,19 +1,18 @@
 import { defineConfig } from "sanity";
-import { presentationTool } from "sanity/presentation";
-import { resolve } from "./src/sanity/lib/resolve";
 import { schema } from "./sanity";
 import { structure } from "./sanity/deskStructure";
 import { structureTool } from "sanity/structure";
 
+const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID ?? "";
+const dataset = import.meta.env.PUBLIC_SANITY_DATASET ?? "";
+
+if (!projectId || !dataset) {
+  throw new Error("Missing Sanity environment variables");
+}
+
 export default defineConfig({
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
-  plugins: [
-    structureTool({ structure }),
-    presentationTool({
-      resolve,
-      previewUrl: location.origin,
-    }),
-  ],
+  projectId,
+  dataset,
+  plugins: [structureTool({ structure })],
   schema,
 });

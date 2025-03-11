@@ -1,16 +1,5 @@
 ---
-interface AllProjectsList {
-  title: string;
-  launchYear: string;
-  tagLine: string;
-  linkLabel: string;
-  slug: string;
-}
-
-interface Props {
-  listItems: AllProjectsList[];
-}
-const { listItems } = Astro.props as Props;
+const { listItems } = Astro.props
 ---
 
 <ul class="ms-0">

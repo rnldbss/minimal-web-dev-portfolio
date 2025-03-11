@@ -2,7 +2,7 @@
 
 This directory contains the configuration and schema definitions for the project's CMS.
 
-## Directory Structure
+**Directory Structure**
 
 ```
 sanity/
@@ -20,8 +20,6 @@ sanity/
     ├───plugins/        # Reusable field configurations
     └───utils/          # Base schemas and configurations
 ```
-
-## Key Files
 
 - `deskStructure.js` - Configures the Sanity Studio navigation and content organization
 - `index.ts` - Entry point that imports and exports all schema types
@@ -45,3 +43,7 @@ The content in Sanity Studio is organized using a custom desk structure (`deskSt
 ## Usage
 
 All schemas are imported and exported through the `index.ts` file, which is the entry point for Sanity Studio configuration. The desk structure (`deskStructure.js`) determines how these schemas are organized and displayed in the Sanity Studio UI.
+
+---
+
+For more information about Sanity Studio configuration visit [Sanity documentation](https://www.sanity.io/docs).
