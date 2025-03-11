@@ -1,0 +1,19 @@
+---
+const {tableOfContentsList} = Astro.props;
+---
+<aside
+        class="border-2 border-primary self-start min-w-80 lg:sticky top-16 p-5"
+      >
+        <nav>
+          <h2 class="pb-2">Table of Contents</h2>
+          <ul class="list-disc list-inside">
+            {
+              tableOfContentsList.map(({ text, id }) => (
+                <li>
+                  <a href={`#${id}`}>{text}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </aside>

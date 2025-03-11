@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
 import MyPortableText from "../../components/portable-text/MyPortableText";
 import MyPortableTextWithTOC from "../../components/portable-text/MyPortableTextWithTOC.astro";
@@ -8,31 +7,13 @@ import { urlFor } from "../../sanity/lib/image";
 import { generateTOC } from "../../js/toc";
 import TwoItemsList from "../../components/TwoItemsList.astro";
 import AllProjectsList from "../../components/AllProjectsList.astro";
-import Chip from "../../components/Chip.astro";
 import CallToAction from "../../components/CallToAction.astro";
 
-interface TechStackItem {
-  name: string;
-  icon?: string;
-}
-
-interface ProjectOverview {
-  body: any;
-  techStack: TechStackItem[];
-}
-
-interface Project extends SanityDocument {
-  title: string;
-  tagLine: string;
-  mainImage: any;
-  body: any;
-  projectOverview: ProjectOverview;
-  slug: { current: string };
-}
+const { params } = Astro;
 
 // GROQ query for static paths
 export async function getStaticPaths() {
-  const { data: projects } = await loadQuery<Project[]>({
+  const { data: projects } = await loadQuery({
     query: `*[_type == "project"]`,
   });
 
@@ -41,22 +22,19 @@ export async function getStaticPaths() {
   }));
 }
 
-const { params } = Astro;
-
 // Fetch project data
-const { data: project } = await loadQuery<Project>({
+const { data: project } = await loadQuery({
   query: `*[_type == "project" && slug.current == $slug][0]`,
   params,
 });
 
 // Fetch all projects for listing
-const { data: allProjects } = await loadQuery<Project[]>({
+const { data: allProjects } = await loadQuery({
   query: `*[_type == "project" && slug.current != $currentSlug]`,
   params: { currentSlug: project.slug.current },
 });
 
-// Generate TOC from `project.body`
-const toc = generateTOC(project.body);
+// const toc = generateTOC(project.body);
 ---
 
 <Layout seo={project.seo}>
@@ -64,7 +42,7 @@ const toc = generateTOC(project.body);
     <section class="space-y-8 pb-10">
       <img
         class="max-h-[45vh] w-full object-cover"
-        src={urlFor(project.mainImage)}
+        src={urlFor(project.mainImage).url()}
         alt={project.title}
       />
       <h1 class="text-xl md:text-2xl">
@@ -95,20 +73,3 @@ const toc = generateTOC(project.body);
     <CallToAction/>
   </section>
 </Layout>
-
-<!-- <aside
-        class="border-2 border-primary self-start min-w-80 lg:sticky top-16 p-5"
-      >
-        <nav>
-          <h2 class="pb-2">Table of Contents</h2>
-          <ul class="list-disc list-inside">
-            {
-              toc.map(({ text, id }) => (
-                <li>
-                  <a href={`#${id}`}>{text}</a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
-      </aside> -->

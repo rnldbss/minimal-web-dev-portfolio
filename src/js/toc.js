@@ -1,16 +1,3 @@
-interface Block {
-  _type: string;
-  style: string;
-  children?: Array<{ text: string }>;
-}
-
-// Define the type for a TOC entry
-interface TOCEntry {
-  text: string;
-  level: string;
-  id: string;
-}
-
 // Generates a table of contents from content blocks
 export function generateTOC(blocks) {
   return blocks
