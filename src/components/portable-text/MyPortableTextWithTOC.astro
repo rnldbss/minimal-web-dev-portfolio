@@ -2,7 +2,7 @@
 import { PortableText } from "astro-portabletext";
 import { urlFor } from "../../sanity/lib/image";
 
-// Classes for headings
+// Tailwind classes for heading styles
 const headingClasses = {
   h1: "mb-4",
   h2: "mb-2 mt-14 first:mt-0 leading-snug",
@@ -12,13 +12,13 @@ const headingClasses = {
 ---
 
 <PortableText value={Astro.props.content}>
-  <!-- Block elements -->
+  <!-- Handles headings and paragraphs -->
   <fragment slot="block">
     {
       ({ Component, props, children }) => {
         const { node } = props;
 
-        //Check if is heading and add id from string
+        // Generate IDs for headings to enable table of contents
         if (["h1", "h2", "h3", "h4"].includes(node.style)) {
           const text = node.children?.map((child) => child.text).join("") || "";
           const id = text.toLowerCase().replace(/\s+/g, "-");
@@ -40,7 +40,7 @@ const headingClasses = {
     }
   </fragment>
 
-  <!-- Lists -->
+  <!-- Handles bullet and numbered lists -->
   <fragment slot="list">
     {
       ({ Component, props, children }) => {
@@ -58,7 +58,7 @@ const headingClasses = {
     }
   </fragment>
 
-  <!-- Inline marks -->
+  <!-- Handles text formatting (bold, italic, etc) -->
   <fragment slot="mark">
     {
       ({ Component, props, children }) => (
@@ -66,7 +66,8 @@ const headingClasses = {
       )
     }
   </fragment>
-  <!-- Image -->
+
+  <!-- Handles images from Sanity -->
   <fragment slot="type">
     {
       ({ Component, props }) => {

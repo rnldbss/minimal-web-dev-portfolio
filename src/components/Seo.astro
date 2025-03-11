@@ -1,10 +1,11 @@
 ---
+// SEO data from Sanity CMS with fallback values
 const { seo } = Astro.props;
 const siteUrl = "https://bessa.dev";
 const seoData = {
   title: seo.title || "Front-end Developer | Ronald Bessa",
   description: seo.description || "Front-end Developer | Ronald Bessa",
-  imageLg: seo.imageLg || `${siteUrl}/images/default-og-image.png`, // Provide a clear fallback
+  imageLg: seo.imageLg || `${siteUrl}/images/default-og-image.png`,
   imageSm: seo.imageSm || `${siteUrl}/images/default-ogsm-image.png`,
   slug: seo.slug === undefined ? "" : seo.slug || "",
   siteUrl: siteUrl || "https://bessa.dev",
@@ -12,6 +13,7 @@ const seoData = {
 };
 ---
 
+<!-- Standard Meta Tags -->
 <>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
@@ -19,24 +21,25 @@ const seoData = {
   <meta name="generator" content={Astro.generator} />
   <meta name="robots" content="index, follow" />
 
+  <!-- Primary Meta Tags -->
   <title>{seoData.title}</title>
   <meta name="description" content={seoData.description} />
   <link rel="canonical" href={`${siteUrl}/${seoData.slug}`} />
 
-  {/* Open Graph / Social Media */}
+  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content={seoData.title} />
   <meta property="og:description" content={seoData.description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={`${siteUrl}/${seoData.slug}`} />
   <meta property="og:site_name" content="Bessa Studio" />
 
-  {/* Large OG Image (for general use) */}
+  <!-- Open Graph Images -->
   <meta property="og:image" content={seoData.imageLg} />
   <meta property="og:image:alt" content={seoData.description} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-  {/* Twitter */}
+  <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={seo.title} />
   <meta name="twitter:description" content={seo.description} />

@@ -1,5 +1,34 @@
-<button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle theme">
-  <!-- Sun icon (for light mode) -->
+---
+// Props interface for component
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+
+// Animation delays for sun rays (in milliseconds)
+const sunRayDelays = [480, 400, 320, 240, 200, 280, 360, 440];
+
+// Sun ray positions [cx, cy]
+const sunRayPositions = [
+  [23, 12],
+  [20.142, 20.142],
+  [12, 23],
+  [3.858, 20.142],
+  [1, 12],
+  [3.858, 3.858],
+  [12, 1],
+  [20.142, 3.858]
+];
+---
+
+<!-- Theme toggle button with accessibility label -->
+<button 
+  id="theme-toggle" 
+  class={`theme-toggle-button ${className}`}
+  aria-label="Toggle theme"
+>
+  <!-- Sun icon (light mode) -->
   <svg
     id="sun-icon"
     width="1rem"
@@ -8,83 +37,30 @@
     class="theme-toggle-icon fill-on-level-0"
     style="transform: rotate(0deg); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);"
   >
-    <!-- Animated sun dots -->
+    <!-- Animated sun rays -->
     <g mask="url(#sun-dots-mask)">
-      <circle
-        cx="23"
-        cy="12"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 480ms;"
-      ></circle>
-      <circle
-        cx="20.142"
-        cy="20.142"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 400ms;"
-      ></circle>
-      <circle
-        cx="12"
-        cy="23"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 320ms;"
-      ></circle>
-      <circle
-        cx="3.858"
-        cy="20.142"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 240ms;"
-      ></circle>
-      <circle
-        cx="1"
-        cy="12"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 200ms;"
-      ></circle>
-      <circle
-        cx="3.858"
-        cy="3.858"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 280ms;"
-      ></circle>
-      <circle
-        cx="12"
-        cy="1"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 360ms;"
-      ></circle>
-      <circle
-        cx="20.142"
-        cy="3.858"
-        r="1.5"
-        fill="on-level-0 dark:on-level-0-dark"
-        class="theme-toggle-sun-dot"
-        style="transform-origin: center; transform: scale(0); --enter-animation-delay: 440ms;"
-      ></circle>
+      {sunRayPositions.map(([cx, cy], index) => (
+        <circle
+          cx={cx}
+          cy={cy}
+          r="1.5"
+          fill="on-level-0 dark:on-level-0-dark"
+          class="theme-toggle-sun-dot"
+          style={`transform-origin: center; transform: scale(0); --enter-animation-delay: ${sunRayDelays[index]}ms;`}
+        />
+      ))}
     </g>
-    <!-- Central circle -->
+    <!-- Sun center -->
     <circle
       cx="12"
       cy="12"
       r="7.5"
       fill="on-level-0 dark:on-level-0-dark"
-      stroke="on-level-0 dark:on-level-0-dark"></circle>
+      stroke="on-level-0 dark:on-level-0-dark"
+    />
   </svg>
 
-  <!-- Moon icon (for dark mode) -->
+  <!-- Moon icon (dark mode) -->
   <svg
     id="moon-icon"
     xmlns="http://www.w3.org/2000/svg"
@@ -94,16 +70,12 @@
     class="theme-toggle-icon animate-moon-fade-in fill-on-level-0-dark"
     style="display: none;"
   >
-    <g>
-      <path
-        d="M79.248,38.668c-1.246-0.464-2.669-0.088-3.518,0.95c-4.791,5.84-11.858,9.192-19.403,9.192c-13.833,0-25.083-11.255-25.083-25.083c0-6.963,2.808-13.441,7.908-18.242c0.977-0.918,1.26-2.357,0.705-3.579c-0.552-1.222-1.818-1.959-3.157-1.826C15.778,2.112,0,19.511,0,40.555c0,22.424,18.245,40.669,40.672,40.669c22.16,0,40.002-17.363,40.616-39.528C81.324,40.355,80.508,39.136,79.248,38.668z M40.671,74.953c-18.971,0-34.402-15.43-34.402-34.4c0-14.93,9.389-27.69,22.859-32.43c-2.714,4.689-4.156,10.022-4.156,15.605c0,17.292,14.065,31.355,31.357,31.355c6.317,0,12.373-1.882,17.479-5.322C69.82,64.399,56.557,74.953,40.671,74.953z"
-      ></path>
-    </g>
+    <path d="M79.248,38.668c-1.246-0.464-2.669-0.088-3.518,0.95c-4.791,5.84-11.858,9.192-19.403,9.192c-13.833,0-25.083-11.255-25.083-25.083c0-6.963,2.808-13.441,7.908-18.242c0.977-0.918,1.26-2.357,0.705-3.579c-0.552-1.222-1.818-1.959-3.157-1.826C15.778,2.112,0,19.511,0,40.555c0,22.424,18.245,40.669,40.672,40.669c22.16,0,40.002-17.363,40.616-39.528C81.324,40.355,80.508,39.136,79.248,38.668z M40.671,74.953c-18.971,0-34.402-15.43-34.402-34.4c0-14.93,9.389-27.69,22.859-32.43c-2.714,4.689-4.156,10.022-4.156,15.605c0,17.292,14.065,31.355,31.357,31.355c6.317,0,12.373-1.882,17.479-5.322C69.82,64.399,56.557,74.953,40.671,74.953z"/>
   </svg>
 </button>
 
 <style>
-  /* Container styles */
+  /* Theme toggle button container */
   .theme-toggle-button {
     position: relative;
     display: flex;
@@ -115,19 +87,17 @@
     background: transparent;
     cursor: pointer;
     outline-offset: 2px;
-    transition:
-      background 0.25s,
-      color 0.25s;
+    transition: background 0.25s, color 0.25s;
     fill: transparent;
   }
 
-  /* SVG container */
+  /* Theme toggle icon base styles */
   .theme-toggle-icon {
     overflow: visible;
     stroke-width: 2px;
   }
 
-  /* Sun dots styles */
+  /* Sun ray animation */
   .theme-toggle-sun-dot {
     transform: scale(0);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -136,15 +106,11 @@
   }
 
   @keyframes sun-dot-pop {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(1);
-    }
+    from { transform: scale(0); }
+    to { transform: scale(1); }
   }
 
-  /* Moon fade in animation */
+  /* Moon fade animation */
   @keyframes moon-fade-in {
     from {
       opacity: 0;
@@ -155,11 +121,12 @@
       transform: rotate(0deg);
     }
   }
+
   .animate-moon-fade-in {
     animation: moon-fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Reduced motion support */
+  /* Accessibility: Reduce motion */
   @media (prefers-reduced-motion: reduce) {
     .theme-toggle-icon,
     .theme-toggle-sun-dot {
@@ -170,28 +137,33 @@
 </style>
 
 <script is:inline>
+  // Theme toggle functionality
   const button = document.getElementById("theme-toggle");
   const sunIcon = document.getElementById("sun-icon");
   const moonIcon = document.getElementById("moon-icon");
 
-  // On initial load, check localStorage and update the theme.
-  if (localStorage.theme === "dark") {
-    document.documentElement.classList.add("dark");
-    sunIcon.style.display = "none";
-    moonIcon.style.display = "block";
-  }
+  // Set initial icon states based on current theme
+  const isDark = document.documentElement.classList.contains('dark');
+  sunIcon.style.display = isDark ? "none" : "block";
+  moonIcon.style.display = isDark ? "block" : "none";
 
+  // Handle theme toggle click
   button.addEventListener("click", () => {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.theme = isDark ? "dark" : "light";
 
-    // Toggle which icon is visible based on the theme.
-    if (isDark) {
-      sunIcon.style.display = "none";
-      moonIcon.style.display = "block";
-    } else {
-      sunIcon.style.display = "block";
-      moonIcon.style.display = "none";
+    // Toggle icon visibility
+    sunIcon.style.display = isDark ? "none" : "block";
+    moonIcon.style.display = isDark ? "block" : "none";
+  });
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!('theme' in localStorage)) {
+      const isDark = e.matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      sunIcon.style.display = isDark ? "none" : "block";
+      moonIcon.style.display = isDark ? "block" : "none";
     }
   });
-</script>
+</script> 
