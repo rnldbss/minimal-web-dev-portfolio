@@ -143,8 +143,12 @@ const sunRayPositions = [
   const sunIcon = document.getElementById("sun-icon");
   const moonIcon = document.getElementById("moon-icon");
 
-  // Set initial icon states based on current theme
-  const isDark = document.documentElement.classList.contains('dark');
+  // Check initial theme state (system preference or localStorage)
+  const isDark = 
+    localStorage.theme === 'dark' || 
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  // Set initial icon states
   sunIcon.style.display = isDark ? "none" : "block";
   moonIcon.style.display = isDark ? "block" : "none";
 
