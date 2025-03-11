@@ -1,8 +1,8 @@
 import { defineConfig } from "sanity";
 import { presentationTool } from "sanity/presentation";
 import { resolve } from "./src/sanity/lib/resolve";
-import { schema } from "./sanity/schemaTypes";
-import { structure } from "./deskStructure";
+import { schema } from "./sanity";
+import { structure } from "./sanity/deskStructure";
 import { structureTool } from "sanity/structure";
 
 export default defineConfig({

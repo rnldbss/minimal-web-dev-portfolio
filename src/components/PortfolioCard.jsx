@@ -10,12 +10,12 @@ export default function PortfolioCard({
   className,
 }) {
   return (
-    <div className={`flex flex-col-reverse gap-5 ${className}`}>
+    <div className={`flex flex-col-reverse gap-2 ${className}`}>
       <div className="w-full my-auto space-y-2">
         <h3>{cardHeading}</h3>
         <MyPortableText content={cardBody} />
         <ButtonSecondary
-          buttonText="Read case study"
+          buttonText="Read details"
           buttonHref={`/portfolio/${projectSlug}`}
         />
       </div>

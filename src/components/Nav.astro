@@ -1,11 +1,31 @@
+---
+import { Image } from "astro:assets";
+import signature from '../assets/images/signature.png';
+
+const currentPath = Astro.url.pathname;
+---
+
 <nav class="w-full">
-  <ul class="gap-5 flex items-center ml-0">
-    <li class="sm:mr-auto">
-      <a href="/" class="font-cal text-lg">RB</a>
+  <ul class="gap-2 flex items-center ml-0">
+
+    <li>
+      <a href="/">
+        <Image class="object-contain h-8 w-8 invert-0 dark:invert" src={signature} alt="Ronald Bessa signature" />
+      </a>
     </li>
 
-    <li class="ml-auto sm:ml-0"><a href="/">Home</a></li>
-    <li><a href="/portfolio">Portfolio</a></li>
-    <li class="mr-auto sm:mr-0"><a href="/contact">Contact</a></li>
+    <li class={`ml-auto rounded-full px-3 ${currentPath === '/' ? 'bg-level-3 dark:bg-level-3-dark' : ''}`}>
+      <a href="/">Home</a>
+    </li>
+
+
+    <li class={`rounded-full px-3 ${currentPath === '/portfolio' ? 'bg-level-3 dark:bg-level-3-dark' : ''}`}>
+      <a href="/portfolio">Portfolio</a>
+    </li>
+
+
+    <li class={`mr-auto rounded-full px-3 ${currentPath === '/contact' ? 'bg-level-3 dark:bg-level-3-dark' : ''}`}>
+      <a href="/contact">Contact</a>
+    </li>
   </ul>
 </nav>

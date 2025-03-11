@@ -12,7 +12,7 @@ export default function ButtonPrimary({ buttonHref, buttonText }) {
         viewBox="0 0 11 11"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="fill-on-level-0 dark:fill-on-level-0-dark group-hover:translate-x-0.5 ease-linear duration-100"
+        className="fill-on-level-0 dark:fill-on-level-0-dark sm:group-hover:translate-x-0.5 ease-linear duration-100"
       >
         <path
           fill-rule="evenodd"

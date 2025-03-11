@@ -72,7 +72,7 @@ export default function ProjectsGrid({ projectsList }) {
       </div>
 
       <div
-        className={`grid grid-flow-row ${twoColumnsGrid ? "grid-cols-2  gap-5" : "grid-cols-1 gap-10"}`}
+        className={`grid grid-flow-row ${twoColumnsGrid ? "grid-cols-2  gap-8" : "grid-cols-1 gap-10"}`}
       >
         <AnimatePresence>
           {projectsList.map((project) => (

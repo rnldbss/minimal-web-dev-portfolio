@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { loadQuery } from "../../sanity/lib/load-query";
 import ProjectsGrid from "../../components/ProjectsGrid";
 import MyPortableText from "../../components/portable-text/MyPortableText";
+import CallToAction from "../../components/CallToAction.astro";
 const { params } = Astro;
 
 const { data: projectsPageData } = await loadQuery<ProjectsPageData>({
@@ -23,5 +24,8 @@ const { data: allProjects } = await loadQuery<Projects[]>({
     </div>
 
     <ProjectsGrid client:load projectsList={allProjects} />
+  </section>
+  <section>
+    <CallToAction/>
   </section>
 </Layout>
