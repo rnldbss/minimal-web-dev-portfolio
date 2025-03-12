@@ -21,21 +21,11 @@ const { data: contactData } = await loadQuery<ContactData>({
   }`,
   params,
 });
-
-console.log(contactData);
 ---
 
 <Layout seo={contactData.seo}>
   <section class="pt-20 space-y-8">
-    <div class="space-y-4">
-      <h1>Get in touch</h1>
-      <p>
-        I'm currently looking for a full-time opportunity where I can
-        contribute, grow, and build great web experiences. If you're hiring or
-        just want to chat about front-end development, feel free to reach out :)
-      </p>
-    </div>
-
+    <h1>Get in touch</h1>
     <ul class="ms-0 space-y-1.5">
       {
         contactData.links.map((listItem) => {
@@ -47,7 +37,7 @@ console.log(contactData);
             <li>
               <a
                 class="flex items-center gap-3 group cursor-pointer"
-                rel="norefferer"
+                rel={href?.startsWith("mailto:") ? undefined : "norefferer"}
                 href={href}
                 target={href?.startsWith("mailto:") ? undefined : "_blank"}
                 download={listItem.urlType === "file" ? true : undefined}

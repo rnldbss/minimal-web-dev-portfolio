@@ -33,7 +33,7 @@ export default function MyPortableText({ content }) {
             href={value?.href}
             target={target}
             rel={target === "_blank" ? "noopener noreferrer" : undefined}
-            className="text-accent-primary hover:underline"
+            className="hover:text-accent-primary decoration-accent-primary underline"
           >
             {children}
           </a>
