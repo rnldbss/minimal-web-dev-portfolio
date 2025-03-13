@@ -1,40 +1,6 @@
 @font-face {
-  font-family: "Michroma";
-  src: url("/fonts/Michroma/Michroma-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Jakarta";
-  src: url("/fonts/Jakarta/PlusJakartaSans-Italic-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Jakarta";
-  src: url("/fonts/Jakarta/PlusJakartaSans-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "PP Neue Montreal";
   src: url("/fonts/PPNeueMontreal/ppneuemontreal-book.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Anek";
-  src: url("/fonts/Anek/AnekLatin-VariableFont_wdth,wght.ttf")
-    format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

@@ -48,10 +48,7 @@ export default {
     },
 
     fontFamily: {
-      jakarta: ["Jakarta", "sans serif"],
-      michroma: ["Michroma", "sans serif"],
       "pp-neue-montreal": ["PP Neue Montreal", "sans serif"],
-      anek: ["Anek", "sans serif"],
       cal: ["Cal", "sans serif"],
     },
   },
