@@ -45,6 +45,11 @@ export const projectType = defineType({
       group: "hero",
     }),
     defineField({
+      name: "mainVideo",
+      type: "video",
+      group: "hero",
+    }),
+    defineField({
       name: "title",
       type: "string",
       group: "hero",

@@ -82,11 +82,11 @@ export default function ProjectsGrid({ projectsList }) {
               transition={{ duration: 0.5 }}
             >
               <PortfolioCard
+                videoSrc={project.mainVideo}
                 cardHeading={twoColumnsGrid ? undefined : project.title}
                 cardBody={twoColumnsGrid ? undefined : project.cardDescription}
                 cardImage={urlFor(project.mainImage)}
                 cardImageAlt={project.mainImage.alt}
-                cardList={project.projectOverview.techStack}
                 projectSlug={project.slug.current}
               />
             </motion.div>

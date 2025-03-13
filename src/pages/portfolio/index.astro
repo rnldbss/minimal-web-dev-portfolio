@@ -13,7 +13,27 @@ const { data: projectsPageData } = await loadQuery<ProjectsPageData>({
 
 // Fetch all projects for listing
 const { data: allProjects } = await loadQuery<Projects[]>({
-  query: `*[_type == "project"] | order(orderRank)`,
+  query: `*[_type == "project"] | order(orderRank) {
+    _id,
+    title,
+    cardDescription,
+    slug,
+    tagLine,
+    linkLabel,
+    mainImage,
+      mainVideo {
+      videoWebm {
+        asset->{
+          url
+        }
+      },
+      videoMp4 {
+        asset->{
+          url
+        }
+      }
+    }
+  }`,
 });
 ---
 

@@ -20,6 +20,7 @@ import { twoStringsWithUrlType } from "./schemaTypes/plugins/twoStringsWithHref"
 // Utility Types - Base schemas and shared configurations
 import { blockContentType } from "./schemaTypes/utils/blockContent";
 import { customImageType } from "./schemaTypes/utils/customImage";
+import { videoType } from "./schemaTypes/utils/video";
 
 /**
  * Schema Configuration for Sanity Studio
@@ -53,5 +54,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Utility Types
     blockContentType,
     customImageType,
+    videoType,
   ],
 };

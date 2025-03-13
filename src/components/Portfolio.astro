@@ -9,9 +9,11 @@ const { allProjects, ...props } = Astro.props;
 <section class="space-y-4" {...props}>
   <h2 class="">Projects</h2>
   <div class="space-y-14 md:space-y-20">
+    <!-- Add key -->
     {
       allProjects.map((item) => (
         <PortfolioCard
+      videoSrc={item.mainVideo}
           cardHeading={item.title}
           cardBody={item.cardDescription}
           cardImage={urlFor(item.mainImage)}
