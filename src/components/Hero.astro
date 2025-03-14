@@ -18,7 +18,7 @@ const { tagLine, heading, body, image, ...props } = Astro.props;
     <MyPortableText content={body} />
 
     <div class="flex gap-2 pt-2">
-      <a href="https://linkedin.com/in/ronaldbessa" rel="no-referrer">
+      <a aria-label="Visit Ronald's LinkedIn profile" href="https://linkedin.com/in/ronaldbessa" rel="no-referrer">
         <svg
           width={socialIconsSize}
           height={socialIconsSize}
@@ -38,7 +38,7 @@ const { tagLine, heading, body, image, ...props } = Astro.props;
           </defs>
         </svg></a
       >
-      <a href="https://github.com/rnldbss" rel="no-referrer">
+      <a aria-label="Visit Ronald's GitHub profile" href="https://github.com/rnldbss" rel="no-referrer">
         <svg
           width={socialIconsSize}
           height={socialIconsSize}
