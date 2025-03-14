@@ -8,7 +8,7 @@ import TwoItemsList from "../../components/TwoItemsList.astro";
 import AllProjectsList from "../../components/AllProjectsList.astro";
 import CallToAction from "../../components/CallToAction.astro";
 import PortableTextWithToc from "../../components/portable-text/PortableTextWithToc";
-
+import Video from "../../components/Video";
 const { params } = Astro;
 
 // GROQ query for static paths
@@ -30,6 +30,18 @@ export async function getStaticPaths() {
 const { data: project } = await loadQuery({
   query: `*[_type == "project" && slug.current == $slug][0]{
     ...,
+    mainVideo {
+      videoWebm {
+        asset->{
+          url
+        }
+      },
+      videoMp4 {
+        asset->{
+          url
+        }
+      }
+    },
     body[]{
       ...,
       _type == "video" => {
@@ -60,11 +72,16 @@ const { data: allProjects } = await loadQuery({
 <Layout seo={project.seo}>
   <article class="max-w-xl mx-auto pt-20">
     <section class="space-y-8 pb-10">
-      <img
+       {project.mainVideo ? (
+          <Video src={project.mainVideo} /> // fix: src types
+        ) : (
+           <img
         class="max-h-[45vh] w-full object-cover"
         src={urlFor(project.mainImage).url()}
         alt={project.title}
       />
+        )}
+    
       <h1 class="text-xl md:text-2xl">
         {project.tagLine}
       </h1>
