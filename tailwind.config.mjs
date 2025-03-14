@@ -48,8 +48,8 @@ export default {
     },
 
     fontFamily: {
-      "pp-neue-montreal": ["PP Neue Montreal", "sans serif"],
-      cal: ["Cal", "sans serif"],
+      "pp-neue-montreal": "var(--neue-montreal)",
+      cal: "var(--cal)",
     },
   },
 

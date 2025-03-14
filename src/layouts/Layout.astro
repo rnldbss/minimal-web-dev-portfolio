@@ -4,6 +4,7 @@ import ThemeSwitcherScript from "../components/scripts/theme-swicther-script.ast
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Seo from "../components/Seo.astro";
+import { AstroFont } from "astro-font";
 
 const { seo } = Astro.props;
 ---
@@ -13,6 +14,40 @@ const { seo } = Astro.props;
   <head>
     <Seo seo={seo} />
     <ThemeSwitcherScript />
+    <AstroFont
+      config={[
+        {
+          name: "Cal",
+          src: [
+            {
+              style: 'normal',
+              weight: '400',
+              path: './public/fonts/CalSans-SemiBold.woff2'
+            },
+          ],
+          preload: true,
+          display: "swap",
+          fallback: "sans-serif",
+          cssVariable: "cal"
+
+        },
+        {
+          name: "PP Neue Montreal",
+          src: [
+            {
+              weight: '400',
+              style: 'normal',
+              path:'./public/fonts/ppneuemontreal-regular.woff'
+            }
+          ],
+          preload: false,
+          display: "swap",
+          fallback: "sans-serif",
+          cssVariable: "neue-montreal"
+        },
+      
+      ]}
+    />
   </head>
   <body
     class="bg-level-0 dark:bg-level-0-dark px-4 md:px-10 relative min-h-screen flex flex-col"
