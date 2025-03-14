@@ -1,8 +1,24 @@
+import React from "react";
+
 interface VideoProps {
-  src: string;
+  src: {
+    videoWebm?: {
+      asset: {
+        url: string;
+      };
+    };
+    videoMp4?: {
+      asset: {
+        url: string;
+      };
+    };
+  };
+  className: string;
 }
 
-export default function Video({ src }: VideoProps) {
+export default function Video({ src, className }: VideoProps) {
+  const webmUrl = src.videoWebm?.asset?.url;
+  const mp4Url = src.videoMp4?.asset?.url;
   return (
     <video
       autoPlay
@@ -13,10 +29,10 @@ export default function Video({ src }: VideoProps) {
       width="100%"
       height="auto"
       aria-label="Project showcase video"
-      className="rounded aspect-video w-full"
+      className={`rounded aspect-video w-full ${className}`}
     >
-      <source src={src.videoWebm.asset.url} type="video/webm" />
-      <source src={src.videoMp4.asset.url} type="video/mp4" />
+      {webmUrl && <source src={webmUrl} type="video/webm" />}
+      {mp4Url && <source src={mp4Url} type="video/mp4" />}
       Your browser does not support the video tag.
     </video>
   );

@@ -2,17 +2,16 @@
 import Layout from "../../layouts/Layout.astro";
 import { loadQuery } from "../../sanity/lib/load-query";
 import ProjectsGrid from "../../components/ProjectsGrid";
-import MyPortableText from "../../components/portable-text/MyPortableText";
 import CallToAction from "../../components/CallToAction.astro";
-const { params } = Astro;
 
-const { data: projectsPageData } = await loadQuery<ProjectsPageData>({
+
+const { data: projectsPageData } = await loadQuery({
   query: `*[_type == "projectsPage"][0]`,
-  params,
+
 });
 
 // Fetch all projects for listing
-const { data: allProjects } = await loadQuery<Projects[]>({
+const { data: allProjects } = await loadQuery({
   query: `*[_type == "project"] | order(orderRank) {
     _id,
     title,

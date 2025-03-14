@@ -2,12 +2,12 @@
 import Layout from "../../layouts/Layout.astro";
 import { loadQuery } from "../../sanity/lib/load-query";
 import MyPortableText from "../../components/portable-text/MyPortableText";
-import MyPortableTextWithTOC from "../../components/portable-text/MyPortableTextWithTOC.astro";
 import { urlFor } from "../../sanity/lib/image";
 // import { generateTOC } from "../../js/toc";
 import TwoItemsList from "../../components/TwoItemsList.astro";
 import AllProjectsList from "../../components/AllProjectsList.astro";
 import CallToAction from "../../components/CallToAction.astro";
+import PortableTextWithToc from "../../components/portable-text/PortableTextWithToc";
 
 const { params } = Astro;
 
@@ -23,10 +23,30 @@ export async function getStaticPaths() {
 }
 
 // Fetch project data
+// const { data: project } = await loadQuery({
+//   query: `*[_type == "project" && slug.current == $slug][0]`,
+//   params,
+// });
 const { data: project } = await loadQuery({
-  query: `*[_type == "project" && slug.current == $slug][0]`,
+  query: `*[_type == "project" && slug.current == $slug][0]{
+    ...,
+    body[]{
+      ...,
+      _type == "video" => {
+        videoWebm {
+          asset-> { url }
+        },
+        videoMp4 {
+          asset-> { url }
+        }
+      }
+    }
+  }`,
   params,
 });
+
+console.log(project)
+
 
 // Fetch all projects for listing
 const { data: allProjects } = await loadQuery({
@@ -61,7 +81,7 @@ const { data: allProjects } = await loadQuery({
     </section>
     <section class="flex flex-col-reverse lg:flex-row gap-10 relative">
       <div class="max-w-[50em]">
-        <MyPortableTextWithTOC content={project.body} />
+        <PortableTextWithToc content={project.body} />
       </div>
     </section>
   </article>

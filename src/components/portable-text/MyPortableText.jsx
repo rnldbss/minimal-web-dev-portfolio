@@ -1,3 +1,4 @@
+import React from "react";
 import { PortableText } from "@portabletext/react";
 
 export default function MyPortableText({ content }) {
