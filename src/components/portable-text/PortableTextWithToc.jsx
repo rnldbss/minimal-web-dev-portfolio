@@ -1,5 +1,5 @@
 import React from "react";
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../sanity/lib/image";
 import Video from "../Video";
 
@@ -10,7 +10,7 @@ const headingClasses = {
   h4: "mb-2 mt-4",
 };
 
-const components: PortableTextComponents = {
+const components = {
   block: {
     h1: ({ children }) => {
       const text = children?.[0]?.toString() || "";
@@ -100,6 +100,6 @@ const components: PortableTextComponents = {
   },
 };
 
-export default function PortableTextWithToc({ content }: { content: any }) {
+export default function PortableTextWithToc({ content }) {
   return <PortableText value={content} components={components} />;
 }
