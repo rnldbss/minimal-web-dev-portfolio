@@ -1,6 +1,6 @@
 ---
 import MyPortableText from "./portable-text/MyPortableText";
-import { urlFor } from "../sanity/lib/image";
+import SanityImage from "./SanityImage";
 
 const socialIconsSize = "22px";
 const socialIconsColor =
@@ -63,11 +63,7 @@ const { tagLine, heading, body, image, ...props } = Astro.props;
     </div>
   </div>
   <div class="sm:ml-auto">
-    <img
-      src={urlFor(image).url()}
-      class="w-16 sm:w-32 object-cover rounded-full"
-      alt={image.alt}
-    />
+    <SanityImage priority={true} client:load image={image} alt={image.alt} width={200} height={200} className="w-16 sm:w-32 aspect-square object-cover rounded-full"/>
   </div>
   <div
     class="sm:hidden -rotate-90 w-max origin-bottom-left absolute bottom-0 tracking-wider -right-10 flex items-center gap-1"

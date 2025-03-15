@@ -1,6 +1,7 @@
 import ButtonSecondary from "./ButtonSecondary";
 import MyPortableText from "./portable-text/MyPortableText";
 import Video from "./Video";
+import SanityImage from "./SanityImage";
 
 export default function PortfolioCard({
   cardHeading,
@@ -13,14 +14,16 @@ export default function PortfolioCard({
 }) {
   return (
     <div className={`flex flex-col gap-4 ${className}`}>
-      <div className="w-full">
+      <div className="w-full h-[325px] overflow-hidden">
         {videoSrc ? (
           <Video src={videoSrc} />
         ) : (
-          <img
-            src={cardImage}
-            alt={cardImageAlt}
-            className="object-contain w-full h-full"
+          <SanityImage
+            image={cardImage}
+            alt={cardImage.alt}
+            width={1024}
+            height={576}
+            className="object-fit w-full h-full"
           />
         )}
       </div>

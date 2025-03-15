@@ -85,7 +85,7 @@ export default function ProjectsGrid({ projectsList }) {
                 videoSrc={project.mainVideo}
                 cardHeading={twoColumnsGrid ? undefined : project.title}
                 cardBody={twoColumnsGrid ? undefined : project.cardDescription}
-                cardImage={urlFor(project.mainImage)}
+                cardImage={project.mainImage}
                 cardImageAlt={project.mainImage.alt}
                 projectSlug={project.slug.current}
               />

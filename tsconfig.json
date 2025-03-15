@@ -7,8 +7,9 @@
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["astro/client"]
   },
-  "include": ["sanity/**/*"],
-  "exclude": ["src/**/*"]
+  "include": ["src", "sanity"],
+  "exclude": ["node_modules"]
 }

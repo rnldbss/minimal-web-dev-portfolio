@@ -2,13 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import { loadQuery } from "../../sanity/lib/load-query";
 import MyPortableText from "../../components/portable-text/MyPortableText";
-import { urlFor } from "../../sanity/lib/image";
 // import { generateTOC } from "../../js/toc";
 import TwoItemsList from "../../components/TwoItemsList.astro";
 import AllProjectsList from "../../components/AllProjectsList.astro";
 import CallToAction from "../../components/CallToAction.astro";
 import PortableTextWithToc from "../../components/portable-text/PortableTextWithToc";
 import Video from "../../components/Video";
+import SanityImage from "../../components/SanityImage";
 const { params } = Astro;
 
 // GROQ query for static paths
@@ -75,11 +75,13 @@ const { data: allProjects } = await loadQuery({
        {project.mainVideo ? (
           <Video src={project.mainVideo} /> // fix: src types
         ) : (
-           <img
-        class="max-h-[45vh] w-full object-cover"
-        src={urlFor(project.mainImage).url()}
-        alt={project.title}
-      />
+            <SanityImage
+            image={project.mainImage}
+            alt={project.mainImage.alt}
+            width={1024}
+            height={576}
+            className="object-fit w-full h-full"
+          />
         )}
     
       <h1 class="text-xl md:text-2xl">

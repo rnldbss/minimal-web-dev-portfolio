@@ -2,6 +2,7 @@ import React from "react";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../sanity/lib/image";
 import Video from "../Video";
+import SanityImage from "../SanityImage";
 
 const headingClasses = {
   h1: "mb-4",
@@ -85,10 +86,12 @@ const components = {
       if (!value?.asset) return null;
       return (
         <div className="rounded-md overflow-hidden w-max mx-auto mt-14">
-          <img
-            src={urlFor(value).url()}
-            alt={value.alt || "Image"}
-            className="h-[400px]"
+          <SanityImage
+            image={value}
+            alt={value.alt}
+            width={1024}
+            height={576}
+            className="object-fit w-full h-full"
           />
         </div>
       );
