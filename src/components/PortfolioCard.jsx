@@ -14,7 +14,7 @@ export default function PortfolioCard({
 }) {
   return (
     <div className={`flex flex-col gap-4 ${className}`}>
-      <div className="w-full h-[325px] overflow-hidden">
+      <div className="w-full overflow-hidden">
         {videoSrc ? (
           <Video src={videoSrc} />
         ) : (
