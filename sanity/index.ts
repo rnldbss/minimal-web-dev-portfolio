@@ -6,6 +6,7 @@ import { contactType } from "./schemaTypes/documents/contact/contact";
 import { projectType } from "./schemaTypes/documents/portfolio/project";
 import { projectsPageType } from "./schemaTypes/documents/portfolio/projectsPage";
 import { linksType } from "./schemaTypes/documents/components/links";
+import { testimonialType } from "./schemaTypes/documents/references/testimonial";
 
 // Plugin Types - Reusable field configurations
 import { experienceType } from "./schemaTypes/plugins/experience";
@@ -40,6 +41,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projectType,
     projectsPageType,
     linksType,
+    testimonialType,
 
     // Plugin Types
     experienceType,

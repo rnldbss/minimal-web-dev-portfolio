@@ -3,8 +3,8 @@ import { schema } from "./sanity";
 import { structure } from "./sanity/deskStructure";
 import { structureTool } from "sanity/structure";
 
-const projectId = process.env.PUBLIC_SANITY_PROJECT_ID || "";
-const dataset = process.env.PUBLIC_SANITY_DATASET || "";
+const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID ?? "";
+const dataset = import.meta.env.PUBLIC_SANITY_DATASET ?? "";
 
 if (!projectId || !dataset) {
   throw new Error("Missing Sanity environment variables");

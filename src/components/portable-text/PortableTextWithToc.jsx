@@ -1,6 +1,5 @@
 import React from "react";
 import { PortableText } from "@portabletext/react";
-import { urlFor } from "../../sanity/lib/image";
 import Video from "../Video";
 import SanityImage from "../SanityImage";
 
@@ -97,8 +96,44 @@ const components = {
       );
     },
 
-    video: ({ value }) => {
-      return <Video className={"mt-14"} src={value} />;
+    video: ({ value }) => <Video className="mt-14" src={value} />,
+
+    testimonial: ({ value }) => {
+      if (!value) return null;
+      const { name, info, body, image } = value;
+      return (
+        <div className="bg-level-1 dark:bg-level-1-dark p-4 mt-14 rounded space-y-3">
+          <div className="flex gap-2 items-center">
+            {image && image.asset && (
+              <SanityImage
+                image={image}
+                alt={image.alt || "Testimonial Image"}
+                width={100}
+                height={100}
+                className="rounded-full h-12 w-12"
+              />
+            )}
+            <div>
+              <p className="font-semibold">{name}</p>
+              {info && <p className="text-sm">{info}</p>}
+            </div>
+          </div>
+          <div className="[&>p]:mb-0">
+            <PortableText value={body} components={components} />
+          </div>
+        </div>
+      );
+    },
+
+    // Add a handler for "reference" blocks.
+    reference: ({ value }) => {
+      if (!value) return null;
+      // Check if the referenced document is a testimonial.
+      if (value._type === "testimonial") {
+        return components.types.testimonial({ value });
+      }
+      // Fallback for other reference types.
+      return <div>Unsupported reference type: {value._type}</div>;
     },
   },
 };

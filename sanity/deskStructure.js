@@ -1,4 +1,5 @@
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
+import { testimonialType } from "./schemaTypes/documents/references/testimonial";
 
 export const structure = (S, context) =>
   S.list()
@@ -45,8 +46,13 @@ export const structure = (S, context) =>
       // Filter out already handled document types from the default list
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["home", "project", "contact", "links", "projectsPage"].includes(
-            listItem.getId()
-          )
+          ![
+            "home",
+            "project",
+            "contact",
+            "links",
+            "projectsPage",
+            "testimonial",
+          ].includes(listItem.getId())
       ),
     ]);

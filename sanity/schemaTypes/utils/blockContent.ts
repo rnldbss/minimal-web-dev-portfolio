@@ -62,5 +62,10 @@ export const blockContentType = defineType({
     defineArrayMember({
       type: "video",
     }),
+    defineArrayMember({
+      type: "reference",
+      to: [{ type: "testimonial" }],
+      title: "Testimonial",
+    }),
   ],
 });

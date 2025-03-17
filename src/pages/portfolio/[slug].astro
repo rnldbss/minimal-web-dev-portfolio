@@ -51,13 +51,14 @@ const { data: project } = await loadQuery({
         videoMp4 {
           asset-> { url }
         }
-      }
+      },
+       _type == "reference" => @->
     }
   }`,
   params,
 });
 
-console.log(project)
+console.log(project.body)
 
 
 // Fetch all projects for listing

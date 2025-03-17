@@ -10,6 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["astro/client"]
   },
-  "include": ["src", "sanity"],
+  "include": ["src", "sanity", "env.d.ts"],
   "exclude": ["node_modules"]
 }
