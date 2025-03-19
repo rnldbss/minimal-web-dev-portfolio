@@ -28,7 +28,11 @@
   a,
   span,
   li {
-    @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark/95;
+    @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark-1;
+  }
+
+  a {
+    @apply font-pp-neue-montreal text-base text-on-level-0 dark:text-on-level-0-dark;
   }
 
   small {

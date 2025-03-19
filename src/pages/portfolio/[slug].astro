@@ -89,9 +89,11 @@ const { data: allProjects } = await loadQuery({
         {project.tagLine}
       </h1>
       <div class="space-y-4">
-        <h2 class="text-accent-primary dark:text-accent-primary">
+        <div class="flex justify-between items-center"><h2 class="text-accent-primary dark:text-accent-primary">
           {project.title}
-        </h2>
+
+        </h2><span class="dark:text-on-level-0-dark">{project.launchYear}</span></div>
+        
         <MyPortableText content={project.projectOverview?.body} />
       </div>
     </section>

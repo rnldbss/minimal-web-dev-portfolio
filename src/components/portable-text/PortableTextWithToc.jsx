@@ -115,10 +115,10 @@ const components = {
             )}
             <div>
               <p className="font-semibold">{name}</p>
-              {info && <p className="text-sm">{info}</p>}
+              {info && <p className="text-xs">{info}</p>}
             </div>
           </div>
-          <div className="[&>p]:mb-0">
+          <div className="[&>p]:mb-0 [&>p]:dark:text-on-level-0-dark">
             <PortableText value={body} components={components} />
           </div>
         </div>

@@ -24,6 +24,7 @@ export default {
           level: {
             0: "#435358",
             "0-dark": "#FAFCF8",
+            "0-dark-1": "#cbcdce",
           },
           accent: {
             primary: "#121212",

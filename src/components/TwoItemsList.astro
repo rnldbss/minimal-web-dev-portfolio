@@ -6,7 +6,7 @@ const { listItems, containerStyles } = Astro.props
   {
     listItems.map((item) => (
       <li class="border-b border-accent-primary dark:border-accent-primary/50 py-1.5 flex items-center justify-between last:border-0 sm:last:border-b">
-        <span>{item.itemOne}</span>
+        <span class="dark:text-on-level-0-dark">{item.itemOne}</span>
         <span class="text-sm">{item.itemTwo}</span>
       </li>
     ))

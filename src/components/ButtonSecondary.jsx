@@ -4,7 +4,7 @@ export default function ButtonPrimary({ buttonHref, buttonText }) {
       class="group flex items-center gap-2 border-b-2 font-semibold border-accent-primary w-max"
       href={buttonHref}
     >
-      <span> {buttonText}</span>
+      <span className="dark:text-on-level-0-dark"> {buttonText}</span>
 
       <svg
         width="11"

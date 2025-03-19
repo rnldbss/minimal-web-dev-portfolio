@@ -37,9 +37,9 @@ const { data: contactData } = await loadQuery<ContactData>({
             <li>
               <a
                 class="flex items-center gap-3 group cursor-pointer"
-                rel={href?.startsWith("mailto:") ? undefined : "norefferer"}
+                rel={!href?.startsWith("mailto:") ? "noreferrer" : undefined}
                 href={href}
-                target={href?.startsWith("mailto:") ? undefined : "_blank"}
+                target={!href?.startsWith("mailto:") ? "_blank" : undefined}
                 download={listItem.urlType === "file" ? true : undefined}
               >
                 <span class="font-cal">{listItem.itemOne}</span>

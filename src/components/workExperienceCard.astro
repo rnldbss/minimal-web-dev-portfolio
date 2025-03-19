@@ -11,7 +11,7 @@ const { image, company, date, description } = Astro.props;
   </div>
   <div class="col-start-2 ml-4 sm:ml-0 col-span-full self-center">
     <h3>{company}</h3>
-    <span>{date}</span>
+    <span class="dark:text-on-level-0-dark">{date}</span>
   </div>
   <div class="space-y-2 col-span-full sm:col-start-2">
     <MyPortableText content={description} />
