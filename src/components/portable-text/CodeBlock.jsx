@@ -1,9 +1,11 @@
 import React from "react";
 import { Refractor, registerLanguage } from "react-refractor";
 import "../../styles/prism-duotone-sea.css";
+import clike from "refractor/lang/clike.js";
 import js from "refractor/lang/javascript.js";
 import ts from "refractor/lang/typescript.js";
 
+registerLanguage(clike);
 registerLanguage(js);
 registerLanguage(ts);
 
