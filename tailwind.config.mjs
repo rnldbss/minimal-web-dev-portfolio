@@ -51,6 +51,7 @@ export default {
     fontFamily: {
       "pp-neue-montreal": "var(--neue-montreal)",
       cal: "var(--cal)",
+      "source-pro": "var(--source-pro)",
     },
   },
 

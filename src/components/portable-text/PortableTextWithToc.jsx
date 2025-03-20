@@ -2,6 +2,7 @@ import React from "react";
 import { PortableText } from "@portabletext/react";
 import Video from "../Video";
 import SanityImage from "../SanityImage";
+import CodeBlock from "./CodeBlock";
 
 const headingClasses = {
   h1: "mb-4",
@@ -121,6 +122,16 @@ const components = {
           <div className="[&>p]:mb-0 [&>p]:dark:text-on-level-0-dark">
             <PortableText value={body} components={components} />
           </div>
+        </div>
+      );
+    },
+
+    code: ({ value }) => {
+      if (!value?.code) return null;
+      console.log(value);
+      return (
+        <div className="text-sm rounded overflow-hidden">
+          <CodeBlock code={value.code} language={value.language} />
         </div>
       );
     },

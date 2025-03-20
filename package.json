@@ -15,6 +15,7 @@
     "@portabletext/react": "^3.2.1",
     "@sanity/astro": "^3.1.9",
     "@sanity/client": "^6.24.1",
+    "@sanity/code-input": "^5.1.2",
     "@sanity/image-url": "^1.1.0",
     "@sanity/orderable-document-list": "^1.2.3",
     "@sanity/visual-editing": "^2.11.5",
@@ -26,6 +27,7 @@
     "framer-motion": "^12.4.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-refractor": "^3.1.1",
     "sanity": "^3.68.3",
     "tailwindcss": "^3.4.17"
   }

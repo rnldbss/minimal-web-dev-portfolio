@@ -67,5 +67,13 @@ export const blockContentType = defineType({
       to: [{ type: "testimonial" }],
       title: "Testimonial",
     }),
+    defineArrayMember({
+      type: "code",
+      title: "Code Block",
+      options: {
+        theme: "github",
+        language: "javascript",
+      },
+    }),
   ],
 });

@@ -58,7 +58,6 @@ const { data: project } = await loadQuery({
   params,
 });
 
-console.log(project.body)
 
 
 // Fetch all projects for listing
@@ -96,6 +95,7 @@ const { data: allProjects } = await loadQuery({
         
         <MyPortableText content={project.projectOverview?.body} />
       </div>
+
     </section>
     <section class="space-y-4 pb-14">
       <h2>Technologies used</h2>
