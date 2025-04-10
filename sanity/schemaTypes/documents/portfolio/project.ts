@@ -1,5 +1,5 @@
 import { DesktopIcon, UlistIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 import {
   orderRankField,
   orderRankOrdering,
@@ -59,10 +59,15 @@ export const projectType = defineType({
       type: "string",
       group: "hero",
     }),
-
     defineField({
       name: "launchYear",
       type: "string",
+      group: "hero",
+    }),
+    defineField({
+      name: "links",
+      type: "array",
+      of: [defineArrayMember({ type: "imageWithLink" })],
       group: "hero",
     }),
     defineField({
