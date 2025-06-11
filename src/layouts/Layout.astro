@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Seo from "../components/Seo.astro";
 import { AstroFont } from "astro-font";
+import PostHogScript from "../components/posthog.astro";
 
 const { seo } = Astro.props;
 ---
@@ -14,48 +15,47 @@ const { seo } = Astro.props;
   <head>
     <Seo seo={seo} />
     <ThemeSwitcherScript />
+    <PostHogScript />
     <AstroFont
       config={[
         {
           name: "Cal",
           src: [
             {
-              style: 'normal',
-              weight: '400',
-              path: './public/fonts/CalSans-SemiBold.woff2'
+              style: "normal",
+              weight: "400",
+              path: "./public/fonts/CalSans-SemiBold.woff2",
             },
           ],
           preload: true,
           display: "swap",
           fallback: "sans-serif",
-          cssVariable: "cal"
-
+          cssVariable: "cal",
         },
         {
           name: "PP Neue Montreal",
           src: [
             {
-              weight: '400',
-              style: 'normal',
-              path:'./public/fonts/ppneuemontreal-regular.woff2'
-            }
+              weight: "400",
+              style: "normal",
+              path: "./public/fonts/ppneuemontreal-regular.woff2",
+            },
           ],
           preload: false,
           display: "swap",
           fallback: "sans-serif",
-          cssVariable: "neue-montreal"
+          cssVariable: "neue-montreal",
         },
         {
           src: [],
           name: "SourcePro",
-          googleFontsURL: 'https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap',
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap",
           preload: false,
           display: "swap",
           fallback: "sans-serif",
-          cssVariable: "source-pro"
-
+          cssVariable: "source-pro",
         },
-      
       ]}
     />
   </head>
